@@ -33,8 +33,11 @@ Rails.application.configure do
     domain: Rails.application.secrets.domain_name,
     authentication: "plain",
     enable_starttls_auto: true,
-    user_name: Rails.application.secrets.email_provider_username,
-    password: Rails.application.secrets.email_provider_password
+    #user_name: Rails.application.secrets.email_provider_username,
+    #password: Rails.application.secrets.email_provider_password,
+    user_name: "donsell@gmail.com",
+    password: "vermillion86",
+    openssl_verify_mode: 'none'
   }
   # ActionMailer Config
   config.action_mailer.default_url_options = { :host => 'localhost:3000' }
