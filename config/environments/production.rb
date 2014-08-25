@@ -71,7 +71,6 @@ Rails.application.configure do
   # Send deprecation notices to registered listeners.
   config.active_support.deprecation = :notify
 
-<<<<<<< HEAD
   config.action_mailer.smtp_settings = {
     address: "smtp.gmail.com",
     port: 587,
@@ -88,8 +87,6 @@ Rails.application.configure do
   config.action_mailer.raise_delivery_errors = false
 
 
-=======
->>>>>>> 308804e6755a0a63405544464ae667dcfaca2470
   # Disable automatic flushing of the log to improve performance.
   # config.autoflush_log = false
 
