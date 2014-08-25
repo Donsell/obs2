@@ -9,11 +9,17 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0',          group: :doc
+<<<<<<< HEAD
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw]
 gem 'devise'
 gem 'devise_invitable'
 gem 'foundation-rails'
 gem 'simple_form'
+=======
+gem 'tzinfo-data', platforms: [:mingw, :mswin]
+gem 'foundation-rails'
+gem 'high_voltage'
+>>>>>>> 308804e6755a0a63405544464ae667dcfaca2470
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller', :platforms=>[:mri_20]

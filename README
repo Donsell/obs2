@@ -10,15 +10,25 @@ Please provide a copy of this README file when reporting any issues.
 
 
 option  Build a starter application?
+<<<<<<< HEAD
 choose  Enter your selection: [rails-devise]
 option  Get on the mailing list for Rails Composer news?
 choose  Enter your selection: [none]
+=======
+choose  Enter your selection: [rails-foundation]
+option  Get on the mailing list for Rails Composer news?
+choose  Enter your selection: [mailinglist]
+>>>>>>> 308804e6755a0a63405544464ae667dcfaca2470
 option  Web server for development?
 choose  Enter your selection: [webrick]
 option  Web server for production?
 choose  Enter your selection: [passenger]
 option  Database used in development?
+<<<<<<< HEAD
 choose  Enter your selection: [sqlite]
+=======
+choose  Enter your selection: [default]
+>>>>>>> 308804e6755a0a63405544464ae667dcfaca2470
 option  Template engine?
 choose  Enter your selection: [erb]
 option  Test framework?
@@ -28,19 +38,33 @@ choose  Enter your selection: [guard]
 option  Front-end framework?
 choose  Enter your selection: [foundation5]
 option  Add support for sending email?
+<<<<<<< HEAD
 choose  Enter your selection: [gmail]
 option  Authentication?
 choose  Enter your selection: [devise]
 option  Devise modules?
 choose  Enter your selection: [invitable]
+=======
+choose  Enter your selection: [none]
+option  Authentication?
+choose  Enter your selection: [false]
+option  Devise modules?
+choose  Enter your selection: [false]
+>>>>>>> 308804e6755a0a63405544464ae667dcfaca2470
 option  OmniAuth provider?
 choose  Enter your selection: []
 option  Authorization?
 choose  Enter your selection: [false]
 option  Use a form builder gem?
+<<<<<<< HEAD
 choose  Enter your selection: [simple_form]
 option  Add pages?
 choose  Enter your selection: [users]
+=======
+choose  Enter your selection: [false]
+option  Add pages?
+choose  Enter your selection: [about]
+>>>>>>> 308804e6755a0a63405544464ae667dcfaca2470
 option  Set a locale?
 choose  Enter your selection: [none]
 option  Install page-view analytics?

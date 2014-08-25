@@ -8,6 +8,7 @@ Bundler.require(*Rails.groups)
 
 module Obs2
   class Application < Rails::Application
+<<<<<<< HEAD
 
     config.generators do |g|
       g.test_framework :rspec,
@@ -20,6 +21,8 @@ module Obs2
       g.fixture_replacement :factory_girl, dir: "spec/factories"
     end
 
+=======
+>>>>>>> 308804e6755a0a63405544464ae667dcfaca2470
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
@@ -31,9 +34,12 @@ module Obs2
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
+<<<<<<< HEAD
 
     # For Foundation 5
     config.assets.precompile += %w( vendor/modernizr )
 
+=======
+>>>>>>> 308804e6755a0a63405544464ae667dcfaca2470
   end
 end
