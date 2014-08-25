@@ -27,11 +27,11 @@ Rails.application.configure do
   # number of complex assets.
   config.assets.debug = true
 
-<<<<<<< HEAD
+
   config.action_mailer.smtp_settings = {
     address: "smtp.gmail.com",
     port: 587,
-    domain: Rails.application.secrets.domain_name,
+    domain: "Rails.application.secrets.domain_name",
     authentication: "plain",
     enable_starttls_auto: true,
     #user_name: Rails.application.secrets.email_provider_username,
@@ -47,9 +47,6 @@ Rails.application.configure do
   # Send email in development mode?
   config.action_mailer.perform_deliveries = true
 
-
-=======
->>>>>>> 308804e6755a0a63405544464ae667dcfaca2470
   # Adds additional error checking when serving assets at runtime.
   # Checks for improperly declared sprockets dependencies.
   # Raises helpful error messages.
