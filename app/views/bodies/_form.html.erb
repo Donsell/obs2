@@ -1,0 +1,45 @@
+<%= simple_form_for(@body) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+
+    <%= f.input :body_id %>
+
+    <%= f.input :alt_id %>
+
+    <%= f.input :body_type_id %>
+
+    <%= f.association :constellation %>
+
+    <%= f.input :right_ascension %>
+
+    <%= f.input :declination %>
+
+    <%= f.input :surface_brightness %>
+
+    <%= f.input :uranometria %>
+
+    <%= f.input :sky_atlas_2000 %>
+
+    <%= f.input :pocket_sky_atlas %>
+
+    <%= f.input :size_max %>
+
+    <%= f.input :size_min %>
+
+    <%= f.input :position_angle %>
+
+    <%= f.input :class_id %>
+
+    <%= f.input :number_of_stars %>
+
+    <%= f.input :brightest_star_mag %>
+
+    <%= f.input :ngc_description %>
+
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

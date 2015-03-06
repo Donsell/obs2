@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @telescope.user_id %>
+</p>
+
+<p>
+  <strong>Make:</strong>
+  <%= @telescope.make %>
+</p>
+
+<p>
+  <strong>Model:</strong>
+  <%= @telescope.model %>
+</p>
+
+<p>
+  <strong>Focal length:</strong>
+  <%= @telescope.focal_length %>
+</p>
+
+<p>
+  <strong>F ratio:</strong>
+  <%= @telescope.f_ratio %>
+</p>
+
+<p>
+  <strong>Diameter:</strong>
+  <%= @telescope.diameter %>
+</p>
+
+<%= link_to 'Edit', edit_telescope_path(@telescope) %> |
+<%= link_to 'Back', user_path %>

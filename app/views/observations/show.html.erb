@@ -1,0 +1,59 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @observation.user_id %>
+</p>
+
+<p>
+  <strong>Sesssion:</strong>
+  <%= @observation.sesssion_id %>
+</p>
+
+<p>
+  <strong>Body:</strong>
+  <%= @observation.body_id %>
+</p>
+
+<p>
+  <strong>Obs date:</strong>
+  <%= @observation.obs_date %>
+</p>
+
+<p>
+  <strong>Obs time:</strong>
+  <%= @observation.obs_time %>
+</p>
+
+<p>
+  <strong>Seeing:</strong>
+  <%= @observation.seeing %>
+</p>
+
+<p>
+  <strong>Transparency:</strong>
+  <%= @observation.transparency %>
+</p>
+
+<p>
+  <strong>Telescope:</strong>
+  <%= @observation.telescope_id %>
+</p>
+
+<p>
+  <strong>Eyepiece:</strong>
+  <%= @observation.eyepiece_id %>
+</p>
+
+<p>
+  <strong>Filter:</strong>
+  <%= @observation.filter_id %>
+</p>
+
+<p>
+  <strong>Note:</strong>
+  <%= @observation.note %>
+</p>
+
+<%= link_to 'Edit', edit_observation_path(@observation) %> |
+<%= link_to 'Back', observations_path %>

@@ -1,0 +1,106 @@
+ <p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Object ID:</strong>
+  <%= @body.body_id %>
+</p>
+
+<% if @body.catalogs.size > 1 %>
+  <p>
+    <strong>Also known as: </strong>
+    <% @body.catalogs.each do |catalog| %>
+      <% unless @body.body_id.include? catalog.catalog_num %>
+        <%= catalog.catalog + ' ' + catalog.catalog_num %>
+      <% end %>
+    <% end %>
+  </p>
+<% end %>
+
+<p>
+  <strong>Object type:</strong>
+  <%= @body.body_type.description %>
+</p>
+
+<p>
+  <strong>Constellation:</strong>
+  <%= @body.constellation.constellation %>
+</p>
+
+<p>
+  <strong>Right ascenstion:</strong>
+  <%= format_ra @body.right_ascension %>
+</p>
+
+<p>
+  <strong>Declination:</strong>
+  <%= format_declination @body.declination %>
+</p>
+
+<p>
+  <strong>Surface brightness:</strong>
+  Magnitude <%= @body.surface_brightness %>
+</p>
+
+<p>
+  <strong>Uranometria:</strong>
+  Page <%= @body.uranometria %>
+</p>
+
+<p>
+  <strong>Sky atlas 2000:</strong>
+  Page <%= @body.sky_atlas_2000 %>
+</p>
+
+<p>
+  <strong>Pocket Sky Atlas:</strong>
+  Page <%= @body.pocket_sky_atlas %>
+</p>
+
+<% if @body.size_max? %>
+  <p>
+    <strong>Size:</strong>
+    <%= format_size(@body.size_max) %>
+  <% if @body.size_min? %>
+    x <%= format_size @body.size_min %>
+  <% end %>
+  </p>
+<% end %>
+
+<% if @body.position_angle? %>
+  <p>
+    <strong>Position angle:</strong>
+    <%= @body.position_angle.to_s + "\xC2\xB0" %>
+  </p>
+<% end %>
+
+<% if @body.class_id? %>
+  <p>
+    <strong>Class:</strong>
+    <%= @body.class_id %>
+  </p>
+<% end %>
+
+<% if @body.number_of_stars? %>
+  <p>
+    <strong>Number of stars:</strong>
+    <%= @body.number_of_stars %>
+  </p>
+<% end %>
+
+<% if @body.brightest_star_mag? %>
+  <p>
+    <strong>Brightest star mag:</strong>
+    <%= @body.brightest_star_mag %>
+  </p>
+<% end %>
+<p>
+  <strong>Ngc description:</strong>
+  <%= @body.ngc_description %>
+</p>
+
+<% if @body.id > 1 %>
+  <%= link_to 'Previous', body_path(@body.id - 1) %> |
+<% end %>
+  <%= link_to 'Next', body_path(@body.id + 1) %> |
+<%= link_to 'Edit', edit_body_path(@body) %> |
+<%= link_to 'Back', bodies_path %>

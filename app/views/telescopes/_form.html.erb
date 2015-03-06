@@ -1,0 +1,23 @@
+<%= simple_form_for(@telescope) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+
+    <%= f.input :user_id, :as => :hidden, :input_html => {:value => current_user.id } %>  
+
+    <%= f.input :make %>
+
+    <%= f.input :model %>
+
+    <%= f.input :focal_length %>
+
+    <%= f.input :f_ratio %>
+
+    <%= f.input :diameter %>
+
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

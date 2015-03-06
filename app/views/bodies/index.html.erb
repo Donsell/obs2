@@ -1,0 +1,57 @@
+<h1>Listing bodies</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Body</th>
+      <th>Alt</th>
+      <th>Body type</th>
+      <th>Constellation</th>
+      <th>Right ascenstion</th>
+      <th>Declination</th>
+      <th>Surface brightness</th>
+      <th>Uranometria</th>
+      <th>Sky atlas 2000</th>
+      <th>Pocket sky atlas</th>
+      <th>Size max</th>
+      <th>Size min</th>
+      <th>Position angle</th>
+      <th>Class</th>
+      <th>Number of stars</th>
+      <th>Brightest star mag</th>
+      <th>Ngc description</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @bodies.each do |body| %>
+      <tr>
+        <td><%= body.body_id %></td>
+        <td><%= body.alt_id %></td>
+        <td><%= body.body_type %></td>
+        <td><%= body.constellation %></td>
+        <td><%= body.right_ascenstion %></td>
+        <td><%= body.declination %></td>
+        <td><%= body.surface_brightness %></td>
+        <td><%= body.uranometria %></td>
+        <td><%= body.sky_atlas_2000 %></td>
+        <td><%= body.pocket_sky_atlas %></td>
+        <td><%= body.size_max %></td>
+        <td><%= body.size_min %></td>
+        <td><%= body.position_angle %></td>
+        <td><%= body.class_id %></td>
+        <td><%= body.number_of_stars %></td>
+        <td><%= body.brightest_star_mag %></td>
+        <td><%= body.ngc_description %></td>
+        <td><%= link_to 'Show', body %></td>
+        <td><%= link_to 'Edit', edit_body_path(body) %></td>
+        <td><%= link_to 'Destroy', body, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Body', new_body_path %>

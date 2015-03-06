@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140825155320) do
+ActiveRecord::Schema.define(version: 20150304012917) do
 
   create_table "admins", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -30,6 +30,101 @@ ActiveRecord::Schema.define(version: 20140825155320) do
 
   add_index "admins", ["email"], name: "index_admins_on_email", unique: true
   add_index "admins", ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
+
+  create_table "bodies", force: true do |t|
+    t.text     "body_id"
+    t.text     "alt_id"
+    t.integer  "body_type_id"
+    t.integer  "constellation_id"
+    t.time     "right_ascension"
+    t.float    "declination"
+    t.float    "magnitude"
+    t.float    "surface_brightness"
+    t.integer  "uranometria"
+    t.integer  "sky_atlas_2000"
+    t.integer  "pocket_sky_atlas"
+    t.text     "size_max"
+    t.text     "size_min"
+    t.integer  "position_angle"
+    t.text     "class_id"
+    t.integer  "number_of_stars"
+    t.float    "brightest_star_mag"
+    t.string   "ngc_description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "bodies", ["constellation_id"], name: "index_bodies_on_constellation_id"
+
+  create_table "body_types", force: true do |t|
+    t.text     "abbr"
+    t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "catalogs", force: true do |t|
+    t.string   "catalog"
+    t.string   "catalog_num"
+    t.integer  "body_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "constellations", force: true do |t|
+    t.text     "abbr"
+    t.text     "constellation"
+    t.text     "genitive"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "eyepieces", force: true do |t|
+    t.integer  "user_id"
+    t.string   "make"
+    t.string   "model"
+    t.integer  "focal_length"
+    t.integer  "afov"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "observations", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "sesssion_id"
+    t.integer  "body_id"
+    t.date     "obs_date"
+    t.time     "obs_time"
+    t.integer  "seeing"
+    t.integer  "transparency"
+    t.integer  "telescope_id"
+    t.integer  "eyepiece_id"
+    t.integer  "filter_id"
+    t.text     "note"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "sites", force: true do |t|
+    t.text     "name"
+    t.float    "latitude"
+    t.float    "longitude"
+    t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "user_id"
+  end
+
+  create_table "telescopes", force: true do |t|
+    t.integer  "user_id"
+    t.string   "make"
+    t.string   "model"
+    t.integer  "focal_length"
+    t.float    "f_ratio"
+    t.integer  "diameter"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "",    null: false

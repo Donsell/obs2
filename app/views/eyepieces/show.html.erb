@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @eyepiece.user_id %>
+</p>
+
+<p>
+  <strong>Make:</strong>
+  <%= @eyepiece.make %>
+</p>
+
+<p>
+  <strong>Model:</strong>
+  <%= @eyepiece.model %>
+</p>
+
+<p>
+  <strong>Focal length:</strong>
+  <%= @eyepiece.focal_length %>
+</p>
+
+<p>
+  <strong>Afov:</strong>
+  <%= @eyepiece.afov %>
+</p>
+
+<%= link_to 'Edit', edit_eyepiece_path(@eyepiece) %> |
+<%= link_to 'Back', users_path %>

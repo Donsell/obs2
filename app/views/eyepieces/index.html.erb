@@ -1,0 +1,33 @@
+<h1>Listing eyepieces</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Make</th>
+      <th>Model</th>
+      <th>Focal length</th>
+      <th>Afov</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @eyepieces.each do |eyepiece| %>
+      <tr>
+        <td><%= eyepiece.user_id %></td>
+        <td><%= eyepiece.make %></td>
+        <td><%= eyepiece.model %></td>
+        <td><%= eyepiece.focal_length %></td>
+        <td><%= eyepiece.afov %></td>
+        <td><%= link_to 'Show', eyepiece %></td>
+        <td><%= link_to 'Edit', edit_eyepiece_path(eyepiece) %></td>
+        <td><%= link_to 'Destroy', eyepiece, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Eyepiece', new_eyepiece_path %>
