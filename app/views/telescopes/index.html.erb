@@ -1,34 +1,6 @@
 <h1>Listing telescopes</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>User</th>
-      <th>Make</th>
-      <th>Model</th>
-      <th>Focal length</th>
-      <th>F ratio</th>
-      <th>Diameter</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @telescopes.each do |telescope| %>
-      <tr>
-        <td><%= telescope.user_id %></td>
-        <td><%= telescope.make %></td>
-        <td><%= telescope.model %></td>
-        <td><%= telescope.focal_length %></td>
-        <td><%= telescope.f_ratio %></td>
-        <td><%= telescope.diameter %></td>
-        <td><%= link_to 'Show', telescope %></td>
-        <td><%= link_to 'Edit', edit_telescope_path(telescope) %></td>
-        <td><%= link_to 'Destroy', telescope, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<%= render 'layouts/telescopes' %>
 
 <br>
 

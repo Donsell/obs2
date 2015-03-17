@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150304012917) do
+ActiveRecord::Schema.define(version: 20150313134451) do
 
   create_table "admins", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -91,7 +91,7 @@ ActiveRecord::Schema.define(version: 20150304012917) do
 
   create_table "observations", force: true do |t|
     t.integer  "user_id"
-    t.integer  "sesssion_id"
+    t.integer  "outing_id"
     t.integer  "body_id"
     t.date     "obs_date"
     t.time     "obs_time"
@@ -101,6 +101,30 @@ ActiveRecord::Schema.define(version: 20150304012917) do
     t.integer  "eyepiece_id"
     t.integer  "filter_id"
     t.text     "note"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "outings", force: true do |t|
+    t.integer  "user_id"
+    t.date     "outing_date"
+    t.time     "outing_time"
+    t.integer  "site_id"
+    t.integer  "seeing"
+    t.integer  "limiting_magnatude"
+    t.integer  "transparancy"
+    t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "sessions", force: true do |t|
+    t.integer  "user_id"
+    t.date     "date"
+    t.time     "time"
+    t.integer  "site_id"
+    t.integer  "seeing"
+    t.integer  "transparancy"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

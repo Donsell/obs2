@@ -1,94 +1,16 @@
-<h3>User</h3>
-<p>Name: <%= @user.name if @user.name %></p>
-<p>Email: <%= @user.email if @user.email %></p>
-<% if current_user.admin? %>
-  <p>User is Admin</p>
-<% end %> 
 <% unless @user.telescopes.empty? %>
   <h3>Telescopes</h3>
   <%= link_to 'New', new_telescope_path %>
-  <table>
-    <thead>
-      <tr>
-        <th>User</th>
-        <th>Make</th>
-        <th>Model</th>
-        <th>Focal length</th>
-        <th>F ratio</th>
-        <th>Diameter</th>
-        <th colspan="3"></th>
-      </tr>
-    </thead>
-      <% @user.telescopes.each do |telescope| %>
-      <tr>
-        <td><%= telescope.user_id %></td>
-        <td><%= telescope.make %></td>
-        <td><%= telescope.model %></td>
-        <td><%= telescope.focal_length %></td>
-        <td><%= telescope.f_ratio %></td>
-        <td><%= telescope.diameter %></td>
-        <td><%= link_to 'Edit', edit_telescope_path(telescope) %></td>
-        <td><%= link_to 'Destroy', telescope, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-      <% end %>
-    </table>
+  <%= render 'layouts/telescopes' %>
+
 <h3>Eyepieces</h3>
 <%= link_to 'New', new_eyepiece_path %>
-  
-  <table>
-    <thead>
-      <tr>
-        <th>User</th>
-        <th>Make</th>
-        <th>Model</th>
-        <th>Focal length</th>
-        <th>Afov</th>
-        <th colspan="3"></th>
-      </tr>
-    </thead>
+<%= render 'layouts/eyepieces' %>
 
-    <tbody>
-      <% @user.eyepieces.each do |eyepiece| %>
-        <tr>
-          <td><%= eyepiece.user_id %></td>
-          <td><%= eyepiece.make %></td>
-          <td><%= eyepiece.model %></td>
-          <td><%= eyepiece.focal_length %></td>
-          <td><%= eyepiece.afov %></td>
-          <td><%= link_to 'Show', eyepiece %></td>
-          <td><%= link_to 'Edit', edit_eyepiece_path(eyepiece) %></td>
-          <td><%= link_to 'Destroy', eyepiece, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
 <h3>Observing Sites</h3>
 <%= link_to 'New', new_site_path %>
-  <table>
-    <thread>
-      <tr>
-        <th>User</th>
-        <th>Name</th>
-        <th>Latitude</th>
-        <th>Longitude</th>
-        <th>Description</th>
-      </tr>
-    </thread>
-    <tbody>
-      <% @user.sites.each do |site| %>
-        <tr>
-          <td><%= site.user_id %></td>
-          <td><%= site.name %></td>
-          <td><%= site.latitude %></td> 
-          <td><%= site.longitude %></td>
-          <td><%= site.description %></td>
-          <td><%= link_to 'Show', site %></td>
-          <td><%= link_to 'Edit', edit_site_path(site) %></td>
-          <td><%= link_to 'Destroy', site, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
+<%= render 'layouts/outings' %>
+
 
 <% end %>
 

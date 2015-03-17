@@ -2,15 +2,21 @@
 <nav class="top-bar" data-topbar>
   <ul class="title-area">
   <% if user_signed_in? %>
-    	<li class="name"><%= link_to 'Home', user_path(current_user) %></li>
-	<% else %>
-		<li class="name"><%= link_to 'Home', root_path %></li>
-	<% end %>
-    <li class="toggle-topbar menu-icon"><a href="#">Menu</a></li>
+    	   <li class="name"><%= link_to 'Home', user_path(current_user) %></li>
+  <% else %>
+	   <li class="name"><%= link_to 'Home', root_path %></li>
+  <% end %>
+  <li class="toggle-topbar menu-icon"><a href="#">Menu</a></li>
   </ul>
   <div class="top-bar-section">
     <ul>
       <%= render 'layouts/navigation_links' %>
     </ul>
-  </div>
+</div>
 </nav>
+
+<% if user_signed_in? %>
+  <div>
+    <%= render 'layouts/userinfo' %>
+  </div>
+<% end -%>

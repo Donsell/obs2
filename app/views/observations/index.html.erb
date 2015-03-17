@@ -4,7 +4,7 @@
   <thead>
     <tr>
       <th>User</th>
-      <th>Sesssion</th>
+      <th>Session</th>
       <th>Body</th>
       <th>Obs date</th>
       <th>Obs time</th>
@@ -22,7 +22,7 @@
     <% @observations.each do |observation| %>
       <tr>
         <td><%= observation.user_id %></td>
-        <td><%= observation.sesssion_id %></td>
+        <td><%= observation.outing_id %></td>
         <td><%= observation.body_id %></td>
         <td><%= observation.obs_date %></td>
         <td><%= observation.obs_time %></td>

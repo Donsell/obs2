@@ -1,5 +1,6 @@
 class BodiesController < ApplicationController
   before_action :set_body, only: [:show, :edit, :update, :destroy]
+  before_filter :authenticate_user!
 
   # GET /bodies
   # GET /bodies.json

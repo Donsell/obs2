@@ -1,5 +1,6 @@
 class EyepiecesController < ApplicationController
   before_action :set_eyepiece, only: [:show, :edit, :update, :destroy]
+  before_filter :authenticate_user!
 
   # GET /eyepieces
   # GET /eyepieces.json
@@ -15,6 +16,7 @@ class EyepiecesController < ApplicationController
   # GET /eyepieces/new
   def new
     @eyepiece = Eyepiece.new
+    @eyepiece.user_id = current_user.id
   end
 
   # GET /eyepieces/1/edit
@@ -28,7 +30,7 @@ class EyepiecesController < ApplicationController
 
     respond_to do |format|
       if @eyepiece.save
-        format.html { redirect_to @eyepiece, notice: 'Eyepiece was successfully created.' }
+        format.html { redirect_to user_path(current_user), notice: 'Eyepiece was successfully created.' }
         format.json { render :show, status: :created, location: @eyepiece }
       else
         format.html { render :new }
@@ -42,7 +44,7 @@ class EyepiecesController < ApplicationController
   def update
     respond_to do |format|
       if @eyepiece.update(eyepiece_params)
-        format.html { redirect_to @eyepiece, notice: 'Eyepiece was successfully updated.' }
+        format.html { redirect_to user_path(current_user), notice: 'Eyepiece was successfully updated.' }
         format.json { render :show, status: :ok, location: @eyepiece }
       else
         format.html { render :edit }
@@ -56,7 +58,7 @@ class EyepiecesController < ApplicationController
   def destroy
     @eyepiece.destroy
     respond_to do |format|
-      format.html { redirect_to eyepieces_url, notice: 'Eyepiece was successfully destroyed.' }
+      format.html { redirect_to user_path(current_user), notice: 'Eyepiece was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

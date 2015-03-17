@@ -1,5 +1,6 @@
 class TelescopesController < ApplicationController
   before_action :set_telescope, only: [:show, :edit, :update, :destroy]
+  before_filter :authenticate_user!
 
   # GET /telescopes
   # GET /telescopes.json
@@ -10,11 +11,13 @@ class TelescopesController < ApplicationController
   # GET /telescopes/1
   # GET /telescopes/1.json
   def show
+    @user = User.find(current_user.id)
   end
 
   # GET /telescopes/new
   def new
     @telescope = Telescope.new
+    @telescope.user_id = current_user.id
   end
 
   # GET /telescopes/1/edit
@@ -28,7 +31,7 @@ class TelescopesController < ApplicationController
 
     respond_to do |format|
       if @telescope.save
-        format.html { redirect_to @telescope, notice: 'Telescope was successfully created.' }
+        format.html { redirect_to user_path(current_user), notice: 'Telescope was successfully created.' }
         format.json { render :show, status: :created, location: @telescope }
       else
         format.html { render :new }
@@ -42,7 +45,7 @@ class TelescopesController < ApplicationController
   def update
     respond_to do |format|
       if @telescope.update(telescope_params)
-        format.html { redirect_to @telescope, notice: 'Telescope was successfully updated.' }
+        format.html { redirect_to user_path(current_user), notice: 'Telescope was successfully updated.' }
         format.json { render :show, status: :ok, location: @telescope }
       else
         format.html { render :edit }
@@ -56,7 +59,7 @@ class TelescopesController < ApplicationController
   def destroy
     @telescope.destroy
     respond_to do |format|
-      format.html { redirect_to telescopes_url, notice: 'Telescope was successfully destroyed.' }
+      format.html { redirect_to user_path(current_user), notice: 'Telescope was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
