@@ -10,7 +10,8 @@
     </thead>
 
     <tbody>
-      <% @user.eyepieces.each do |eyepiece| %>
+      <% ep = @user.eyepieces.sort_by &:focal_length %>
+      <% ep.each do |eyepiece| %>
         <tr>
           <td><%= eyepiece.make %></td>
           <td><%= eyepiece.model %></td>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150313134451) do
+ActiveRecord::Schema.define(version: 20150417020522) do
 
   create_table "admins", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -32,8 +32,8 @@ ActiveRecord::Schema.define(version: 20150313134451) do
   add_index "admins", ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
 
   create_table "bodies", force: true do |t|
-    t.text     "body_id"
-    t.text     "alt_id"
+    t.text     "name"
+    t.text     "alt_name"
     t.integer  "body_type_id"
     t.integer  "constellation_id"
     t.time     "right_ascension"
@@ -55,6 +55,7 @@ ActiveRecord::Schema.define(version: 20150313134451) do
   end
 
   add_index "bodies", ["constellation_id"], name: "index_bodies_on_constellation_id"
+  add_index "bodies", ["name"], name: "index_bodies_on_name"
 
   create_table "body_types", force: true do |t|
     t.text     "abbr"
@@ -89,6 +90,13 @@ ActiveRecord::Schema.define(version: 20150313134451) do
     t.datetime "updated_at"
   end
 
+  create_table "location_types", force: true do |t|
+    t.text     "name"
+    t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "observations", force: true do |t|
     t.integer  "user_id"
     t.integer  "outing_id"
@@ -103,6 +111,9 @@ ActiveRecord::Schema.define(version: 20150313134451) do
     t.text     "note"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "catalog_id"
+    t.text     "catalog_name"
+    t.text     "catalog_num"
   end
 
   create_table "outings", force: true do |t|
@@ -137,6 +148,7 @@ ActiveRecord::Schema.define(version: 20150313134451) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
+    t.integer  "location_type_id"
   end
 
   create_table "telescopes", force: true do |t|

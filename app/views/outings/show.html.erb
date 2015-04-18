@@ -1,6 +1,9 @@
 <p id="notice"><%= notice %></p>
 
-<%= render 'outing_table' %>
+<H2>Outing</H2>
+
+<%= render 'show_outing' %>
 
 <%= link_to 'Edit', edit_outing_path(@outing) %> |
+<%= link_to "Add Observation", new_outing_observation_path(@outing) %> |
 <%= link_to 'Back', outings_path %>

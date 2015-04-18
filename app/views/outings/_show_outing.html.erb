@@ -1,0 +1,57 @@
+<div class="row">
+  <div class="small-1 columns">Date</div>
+  <div class="small-1 columns">Time</div>
+  <div class="small-3 columns">Site</div>
+  <div class="small-1 columns">Seeing</div>
+  <div class="small-1 columns">Trans</div>
+  <div class="small-1 columns">NELM</div>
+  <div class="small-1 columns"># Obs</div>
+  <div class="small-3 columns">&nbsp</div>
+</div>
+<div class="row">
+  <div class="small-1 columns"><%= @outing.outing_date.strftime("%y/%m/%d") %></div>
+  <div class="small-1 columns"><%= @outing.outing_time.strftime("%H:%M") %></div>
+  <div class="small-3 columns"><%= @outing.site.name %></div>
+  <div class="small-1 columns"><%= @outing.seeing %></div>
+  <div class="small-1 columns"><%= @outing.transparancy %></div>
+  <div class="small-1 columns"><%= @outing.limiting_magnatude %></div>
+  <div class="small-1 columns"><%= @outing.observations.count %></div>
+  <div class="small-1 columns"><%= link_to 'Details', @outing %></div>
+  <div class="small-1 columns"><%= link_to 'Edit', edit_outing_path(@outing) %></div>
+  <div class="small-1 columns"><%= link_to 'Destroy', @outing, method: :delete, data: { confirm: 'Are you sure?' } %></div>
+</div>
+<div class="row">
+  <div class="large-12 columns"><%= @outing.description %></div>
+</div>
+<% if @outing.observations.count > 0 %>
+  <H2>Observations</H2>
+  </div>
+  <div class="row">
+    <div class="small-1 columns">Date</div>
+    <div class="small-1 columns">Time</div>
+    <div class="small-2 columns">Object</div>
+    <div class="small-2 columns">AKA</div>
+    <div class="small-3 columns">Description</div>
+    <div class="small-3 columns">&nbsp</div>
+  </div>
+  <% @outing.observations.each do |obs| %>
+  <div class="row">
+      <div class="small-1 columns"><%= obs.obs_date.strftime("%y/%m/%d") %></div>
+      <div class="small-1 columns"><%= obs.obs_time.strftime("%H:%M") %></div>
+      <div class="small-2 columns"><%= obs.body.name %></div>
+      <% unless obs.body.alt_name.blank? %>
+        <div class="small-2 columns"><%= obs.body.alt_name %></div>
+      <% else %>
+        <div class="small-2 columns">&nbsp</div>
+      <% end -%>
+      <div class="small-3 columns"><%= "#{obs.body.body_type.description + ' in ' + obs.body.constellation.constellation}" %></div>
+      <div class="small-1 columns">Details</div>
+      <div class="small-1 columns"><%= link_to 'Edit', edit_outing_observation_path(obs.outing, obs) %></div>
+      <div class="small-1 columns"><%= link_to 'Destroy', obs, method: :delete, data: { confirm: 'Are you sure?'} %></div>
+   </div>
+   <div class="row">
+    <div class="small-12 columns"><%= obs.note %></div>
+  </div>
+  <div class="row">&nbsp</div>
+  <% end %>
+<% end %>

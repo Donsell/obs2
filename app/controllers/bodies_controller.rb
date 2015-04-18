@@ -2,10 +2,12 @@ class BodiesController < ApplicationController
   before_action :set_body, only: [:show, :edit, :update, :destroy]
   before_filter :authenticate_user!
 
+
   # GET /bodies
   # GET /bodies.json
   def index
-    @bodies = Body.all
+    @bodies = Body.order(:name).where("name like ?", "%#{params[:term]}%")
+    render json: @bodies.map(&:name)
   end
 
   # GET /bodies/1
@@ -71,6 +73,6 @@ class BodiesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def body_params
-      params.require(:body).permit(:body_id, :alt_id, :body_type, :constellation_id, :right_ascenstion, :declination, :surface_brightness, :uranometria, :sky_atlas_2000, :pocket_sky_atlas, :size_max, :size_min, :position_angle, :class_id, :number_of_stars, :brightest_star_mag, :ngc_description)
+      params.require(:body).permit(:name, :alt_name, :body_type, :constellation_id, :right_ascenstion, :declination, :surface_brightness, :uranometria, :sky_atlas_2000, :pocket_sky_atlas, :size_max, :size_min, :position_angle, :class_id, :number_of_stars, :brightest_star_mag, :ngc_description)
     end
 end

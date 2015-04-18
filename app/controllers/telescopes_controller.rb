@@ -11,7 +11,6 @@ class TelescopesController < ApplicationController
   # GET /telescopes/1
   # GET /telescopes/1.json
   def show
-    @user = User.find(current_user.id)
   end
 
   # GET /telescopes/new
@@ -74,4 +73,6 @@ class TelescopesController < ApplicationController
     def telescope_params
       params.require(:telescope).permit(:user_id, :make, :model, :focal_length, :f_ratio, :diameter)
     end
+
+
 end

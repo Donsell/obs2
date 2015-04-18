@@ -5,21 +5,19 @@ class OutingsController < ApplicationController
   respond_to :html
 
   def index
-    @user = User.find(current_user.id)
-    @outings = Outing.all
-    respond_with(@outings)
+   @outings = Outing.where(user_id: current_user.id).order('outing_date DESC', 'outing_time DESC')
+ #   respond_with(@outings)
   end
 
   def show
-    @user = User.find(current_user.id)
-    @outings = Outing.find_by(user_id:  current_user.id)
+#      @outings = Outing.where(user_id:  current_user.id)
 #    @outs = Array.new
-    respond_with(@outings)
+#    respond_with(@outings)
   end
 
   def new
-    @user = User.find(current_user.id)
-    @outing = Outing.new
+    @outing = Outing.new(outing_params)
+    #@outing = Outing.new
     @outing.user_id = current_user.id
     respond_with(@outing)
   end
@@ -34,8 +32,8 @@ class OutingsController < ApplicationController
   end
 
   def update
-    flash[:notice] = 'Outing was successfully updated.' if @outing.update(outing_params)
-    respond_with(@outing)
+     flash[:notice] = "#{outing_params[:outing_date]}Outing was successfully updated." if @outing.update(outing_params)
+     respond_with(@outing)
   end
 
   def destroy
@@ -49,6 +47,6 @@ class OutingsController < ApplicationController
     end
 
     def outing_params
-      params.require(:outing).permit(:user_id, :outing_date, :outing_time, :site_id, :seeing, :limiting_magnatude, :transparancy, :description)
+      params.require(:outing).permit(:user_id, :outing_date, :outing_time, :site_id, :seeing, :limiting_magnatude, :transparancy, :description, observations_attributes: [:id, :user_id, :body_id, :obs_date, :obs_time, :seeing, :transparancy, :telescope_id, :eyepiece_id, :filter_id, :note, :_destroy, :outing_id])
     end
 end

@@ -7,5 +7,5 @@ class User < ActiveRecord::Base
   has_many :eyepieces,  dependent: :destroy
   has_many :sites,  dependent: :destroy
   has_many :outings,  dependent: :destroy
-
-end
+  has_many :observations, dependent: :destroy 
+ end

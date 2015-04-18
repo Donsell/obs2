@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
-  resources :outings
+  resources :location_types
+
+  resources :outings do
+    resources :observations, :only => [:new, :create, :edit]
+  end
 
   resources :sites
 
@@ -10,6 +14,8 @@ Rails.application.routes.draw do
   resources :telescopes
 
   resources :bodies
+
+  resources :catalogs
 
   devise_for :admins
   root to: 'visitors#index'

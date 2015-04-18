@@ -3,23 +3,27 @@
 
   <div class="form-inputs">
 
-    <%= f.input :user_id %>
+    <%= f.input :user_id, :as => :hidden, :input_html => {:value => current_user.id } %>
 
-    <%= f.input :outing6_id %>
+    <%= f.input :outing_id, :as => :hidden %>
 
-    <%= f.input :body_id %>
+     <%= f.input :catalog_name, collection: @catalogs, :selected => "NGC" %>
 
-    <%= f.input :obs_date %>
+    <%= f.input :catalog_num %>
 
-    <%= f.input :obs_time %>
+    <%= f.input :date_text %>
 
-    <%= f.input :seeing %>
+    <%= f.input :time_text %>
 
-    <%= f.input :transparency %>
+     <%= f.input :seeing, :collection => Observation::SEEING_HASH.sort.map {|k,v| [v,k]}  %>
 
-    <%= f.input :telescope_id %>
+    <%= f.input :transparency, :collection => Observation::TRANS_HASH.sort.map {|k,v| [v,k]} %>
 
-    <%= f.input :eyepiece_id %>
+    <%= f.label :telescope_id %>
+    <%= f.collection_select :telescope_id , Telescope.all, :id, :telescope_name %>
+
+    <%= f.label :eyepiece_id %>
+    <%= f.collection_select :eyepiece_id, Eyepiece.all, :id, :eyepiece_name %>
 
     <%= f.input :filter_id %>
 
@@ -29,5 +33,9 @@
 
   <div class="form-actions">
     <%= f.button :submit %>
+  </div>
+
+  <div class="button">
+    <%= link_to "Done", outing_path(:id => @outing.id) %>
   </div>
 <% end %>

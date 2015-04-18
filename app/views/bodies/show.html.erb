@@ -2,14 +2,14 @@
 
 <p>
   <strong>Object ID:</strong>
-  <%= @body.body_id %>
+  <%= @body.name %>
 </p>
 
 <% if @body.catalogs.size > 1 %>
   <p>
     <strong>Also known as: </strong>
     <% @body.catalogs.each do |catalog| %>
-      <% unless @body.body_id.include? catalog.catalog_num %>
+      <% unless @body.name.include? catalog.catalog_num %>
         <%= catalog.catalog + ' ' + catalog.catalog_num %>
       <% end %>
     <% end %>

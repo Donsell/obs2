@@ -26,20 +26,20 @@ open ("public/data/object_types.txt") do |types|
   end
 end
 #=end
-#=begin 
+#=begin
 Body.delete_all
 Catalog.delete_all
 
 open ("public/data/bodies.csv") do |bodies|
   bodies.read.each_line do |body|
-    object_id, alt_id, type, constellation, ra, dec, mag, sb, ur, sa2000, max, min, angle, class_id, numstars, bs, bchm, ngc = body.squeeze(" ").chomp.split(",")
+    object_id, alt_name, type, constellation, ra, dec, mag, sb, ur, sa2000, max, min, angle, class_id, numstars, bs, bchm, ngc = body.squeeze(" ").chomp.split(",")
     sec = (ra[6].to_i * 6).to_s
     ra.gsub!(/\s/ ,":")
     ra = "2000-01-01 " + ra.chop.chop + ":" + sec
     dec.gsub!(/\s/, ".")
-    if type.chr.to_i != 0  then 
+    if type.chr.to_i != 0  then
       numstars = type.chr.to_i
-    end 
+    end
     type.sub!(/\d/, '#')
     btype = BodyType.where(:abbr => type)
     cnst = Constellation.where(:abbr => constellation.humanize)
@@ -70,7 +70,7 @@ open ("public/data/bodies.csv") do |bodies|
       base_page = 71
       median = 22.5
     end
-    
+
     case dec.to_f
     when -89.99..-60.0
       psa_page = base_page + 9
@@ -102,10 +102,10 @@ open ("public/data/bodies.csv") do |bodies|
       psa_page = base_page
     end
      body = Body.create!(
-      :body_id => object_id,
-      :alt_id => alt_id,
+      :name => nameid,
+      :alt_name => alt_name,
       :body_type_id => btype.first.id,
-      :constellation_id => cnst.first.id, 
+      :constellation_id => cnst.first.id,
       :right_ascension => ra,
       :declination => dec,
       :magnitude => mag,
@@ -117,13 +117,13 @@ open ("public/data/bodies.csv") do |bodies|
       :size_min => min,
       :position_angle => angle,
       :class_id => class_id,
-      :number_of_stars => numstars, 
+      :number_of_stars => numstars,
       :brightest_star_mag => bs,
-      :ngc_description => ngc, 
+      :ngc_description => ngc,
     )
     body_array = object_id.split(';')
     body_array.each do |entry|
-      entry.squeeze!(" ") 
+      entry.squeeze!(" ")
       entry.sub!("V V", "VV")
       entry.sub!("- ", "-")
       entry.sub!("- ", "-")
@@ -134,10 +134,10 @@ open ("public/data/bodies.csv") do |bodies|
       Catalog.create!(
         :catalog => entry_array[0],
         :catalog_num => entry_array[1],
-        :body_id => body.id,
+        :name => name,
       )
     end
-    body_array = alt_id.split(';')
+    body_array = alt_name.split(';')
     body_array.each do |entry|
       entry.squeeze!(" ")
       entry.sub!("V V", "VV")
@@ -151,7 +151,7 @@ open ("public/data/bodies.csv") do |bodies|
         Catalog.create!(
           :catalog => entry_array[0],
           :catalog_num => entry_array[1],
-          :body_id => body.id,
+          :name => name,
         )
       end
     end

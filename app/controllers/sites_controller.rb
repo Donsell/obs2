@@ -15,7 +15,7 @@ class SitesController < ApplicationController
 
   def new
     @site = Site.new
-    respond_with(@site)
+    respond_with(current_user)
   end
 
   def edit
@@ -24,17 +24,17 @@ class SitesController < ApplicationController
   def create
     @site = Site.new(site_params)
     flash[:notice] = 'Site was successfully created.' if @site.save
-    respond_with(@site)
+    respond_with(current_user)
   end
 
   def update
     flash[:notice] = 'Site was successfully updated.' if @site.update(site_params)
-    respond_with(@site)
+    respond_with(current_user)
   end
 
   def destroy
     @site.destroy
-    respond_with(@site)
+    respond_with(current_user)
   end
 
   private
@@ -43,6 +43,6 @@ class SitesController < ApplicationController
     end
 
     def site_params
-      params.require(:site).permit(:user_id, :name, :latitude, :longitude, :description)
+      params.require(:site).permit(:user_id, :name, :location_type_id, :latitude, :longitude, :description)
     end
 end

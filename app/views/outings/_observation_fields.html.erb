@@ -1,0 +1,29 @@
+<div class="nested-fields">
+
+    <%= f.input :user_id,  :as => :hidden, :input_html => {:value => current_user.id} %>
+<div class="row">
+    <div class="small-4 columns">
+    <%= f.label :body_name %>
+    <%= f.text_field :body_name , data: {autocomplete_source: bodies_path} %>
+    </div>
+</div>
+
+
+    <%= f.input :obs_date, as: :date, html5: true %>
+
+    <%= f.input :obs_time, as: :time, html5: true%>
+
+    <%= f.input :seeing %>
+
+    <%= f.input :transparency %>
+
+    <%= f.input :telescope_id %>
+
+    <%= f.input :eyepiece_id %>
+
+    <%= f.input :filter_id %>
+
+    <%= f.input :note %>
+    <%= link_to_remove_association "remove observation", f %>
+
+</div>

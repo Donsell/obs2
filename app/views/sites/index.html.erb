@@ -5,6 +5,7 @@
     <tr>
       <th>User ID</th>
       <th>Name</th>
+      <th>Type</th>
       <th>Latitude</th>
       <th>Longitude</th>
       <th>Description</th>
@@ -17,6 +18,7 @@
       <tr>
         <td><%= site.user_id %></td>
         <td><%= site.name %></td>
+        <td><%= site.location_type.name %></td>
         <td><%= site.latitude %></td>
         <td><%= site.longitude %></td>
         <td><%= site.description %></td>

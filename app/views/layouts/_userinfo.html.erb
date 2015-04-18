@@ -1,8 +1,7 @@
-<% unless @user.blank? || @user.nil? %>
-	<h3>User</h3>
-	<p>Name: <%= @user.name if @user.name %></p>
-	<p>Email: <%= @user.email if @user.email %></p>
-	<% if @user.admin? %>
-  		<p>User is Admin</p>
-	<% end %>
+<h3>User</h3>
+<p>Name: <%= current_user.name  %></p>
+<p>Email: <%= current_user.email  %></p>
+<% if  current_user.admin? %>
+		<p>User is Admin</p>
 <% end %>
+
