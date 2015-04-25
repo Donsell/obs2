@@ -1,0 +1,33 @@
+<div class="tabs-content">
+  <% tab_num = 1 %>
+  <% programs.each do |program| %>
+    <% if tab_num == 1 %>
+      <div class="content active" id="panel<%= tab_num %>">
+    <% else %>
+      <div class="content" id="panel<%= tab_num %>">
+    <% end %>
+    <% tab_num = tab_num + 1 %>
+    <% program_bodies = ProgramBody.where(program_id: program.id).order(:name) %>
+    <% program_bodies.each do |body| %>
+      <% prog_obs = ProgramObservation.where(program_id: program.id, user_id: current_user.id, body_id: body.body_id) %>
+      <% if prog_obs.count > 0 %>
+        <div class="row">
+          <div class="small-2 columns"><%= body.body.name %></div>
+          <div class="small-2 columns"><%= body.body.alt_name %></div>
+          <div class="small-4 columns"><%= body.body.proper_name %></div>
+          <div class="small-1 columns">&nbsp</div>
+          <div class="small-3 columns">Object Viewed <%= pluralize(prog_obs.count, 'time') %></div>
+        </div>
+      <% else %>
+        <div class="row">
+          <div class="small-2 columns"><%= body.body.name %></div>
+          <div class="small-2 columns"><%= body.body.alt_name %></div>
+          <div class="small-4 columns"><%= body.body.proper_name %></div>
+          <div class="small-1 columns">&nbsp</div>
+          <div class="small-3 columns">Object Not Viewed</div>
+        </div>
+      <% end %>
+    <% end %>
+    </div>
+  <% end %>
+</div>

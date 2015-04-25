@@ -2,40 +2,66 @@
   <%= f.error_notification %>
 
   <div class="form-inputs">
-
-    <%= f.input :user_id, :as => :hidden, :input_html => {:value => current_user.id } %>
-
+      <%= f.input :user_id, :as => :hidden, :input_html => {:value => current_user.id } %>
     <%= f.input :outing_id, :as => :hidden %>
+    <div class="row">
+      <div class="small-2 columns">
+        <%= f.input :catalog_name, collection: @catalogs, :selected => "NGC", :autofocus => true %>
+      </div>
+      <div class="small-2 columns">
+        <%= f.label "Catalog Number" %>
+        <%= f.text_field :catalog_num, input_html: {style: 'height:10px;'} %>
+      </div>
+      <div class="small-3 columns">
+        <%= f.input :obs_date, as: :date, html5: true, label: "Date" %>
+      </div>
+      <div class="small-2 columns">
+        <%= f.input :time_text, :label => "Time" %>
+      </div>
+      <div class="small-3 colmns">
+        &nbsp
+      </div>
+    </div>
+    <div class="row">
+      <div class="small-3 columns">
+        <%= f.input :seeing, :collection => Observation::SEEING_HASH.sort.map {|k,v| [v,k]}  %>
+      </div>
+      <div class="small-3 columns">
+        <%= f.input :transparency, :collection => Observation::TRANS_HASH.sort.map {|k,v| [v,k]} %>
+      </div>
+      <div class="small-6 colmns">
+        &nbsp
+      </div>
+    </div>
+    <div class="row">
+    <div class="small-3 columns">
+      <%= f.label :telescope_id %>
+      <%= f.collection_select :telescope_id , Telescope.where(:user_id => current_user.id), :id, :telescope_name %>
+    </div>
+    <div class="small-3 columns">
+      <%= f.label :eyepiece_id %>
+      <%= f.collection_select :eyepiece_id, Eyepiece.where(:user_id => current_user.id), :id, :eyepiece_name %>
+    </div>
+    <div class="small-3 columns">
+      <%= f.label :filter_id %>
+      <%= f.collection_select :filter_id, Filter.where(:user_id  => current_user.id), :id, :filter_name, :include_blank => true %>
+    </div>
+    <div class="small-3 colmns">
+       &nbsp
+    </div>
+    <div class="small-12 columns">
+      <%= f.input :note %>
+    </div>
 
-     <%= f.input :catalog_name, collection: @catalogs, :selected => "NGC" %>
-
-    <%= f.input :catalog_num %>
-
-    <%= f.input :date_text %>
-
-    <%= f.input :time_text %>
-
-     <%= f.input :seeing, :collection => Observation::SEEING_HASH.sort.map {|k,v| [v,k]}  %>
-
-    <%= f.input :transparency, :collection => Observation::TRANS_HASH.sort.map {|k,v| [v,k]} %>
-
-    <%= f.label :telescope_id %>
-    <%= f.collection_select :telescope_id , Telescope.all, :id, :telescope_name %>
-
-    <%= f.label :eyepiece_id %>
-    <%= f.collection_select :eyepiece_id, Eyepiece.all, :id, :eyepiece_name %>
-
-    <%= f.input :filter_id %>
-
-    <%= f.input :note %>
-
-  </div>
-
-  <div class="form-actions">
-    <%= f.button :submit %>
-  </div>
-
-  <div class="button">
-    <%= link_to "Done", outing_path(:id => @outing.id) %>
-  </div>
+      <div class="small-3">
+        <div class="form-actions">
+          <%= f.button :submit %>
+        </div>
+      </div>
+      <div class="small-3">
+        <div class="button">
+          <%= link_to "Done", outing_path(:id => @outing.id), {:style => 'color:#FFFFFF;', :class => "css_class"} %>
+        </div>
+      </div>
+    </div>
 <% end %>

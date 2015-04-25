@@ -1,0 +1,18 @@
+  <table>
+    <thread>
+      <tr>
+        <th>Make</th>
+        <th>Model</th>
+      </tr>
+    </thread>
+    <tbody>
+      <% @user.filters.each do |filter| %>
+        <tr>
+          <td><%= filter.make %></td>
+          <td><%= filter.model  %>
+          <td><%= link_to 'Edit', edit_filter_path(filter) %></td>
+          <td><%= link_to 'Destroy', filter, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>

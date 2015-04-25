@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Program:</strong>
+  <%= @program_body.program_id %>
+</p>
+
+<p>
+  <strong>Body:</strong>
+  <%= @program_body.body_id %>
+</p>
+
+<%= link_to 'Edit', edit_program_body_path(@program_body) %> |
+<%= link_to 'Back', program_bodies_path %>

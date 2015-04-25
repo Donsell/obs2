@@ -7,5 +7,7 @@ class User < ActiveRecord::Base
   has_many :eyepieces,  dependent: :destroy
   has_many :sites,  dependent: :destroy
   has_many :outings,  dependent: :destroy
-  has_many :observations, dependent: :destroy 
+  has_many :observations, dependent: :destroy
+  has_many :filters, dependent: :destroy
+  has_many :program_observations, dependent: :destroy
  end

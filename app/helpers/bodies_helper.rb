@@ -3,7 +3,7 @@ module BodiesHelper
 
     dec_str = args.first.to_s
     dec_arr = dec_str.split('.') 
-    sprintf("%02d\xC2\xB0 %02d\" %02d\'", dec_arr[0].to_i, dec_arr[1].to_i, 0)
+    sprintf("%02d\xC2\xB0 %02d\' %02d\"", dec_arr[0].to_i, dec_arr[1].to_i, 0)
   end
 
   def format_ra(*args)

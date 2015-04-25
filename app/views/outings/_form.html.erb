@@ -5,10 +5,10 @@
     <%= f.input :user_id ,:as => :hidden, :input_html => {:value => current_user.id } %>
 <div class="row">
   <div class="small-3 columns">
-    <%= f.input :outing_date, as: :date, html5: true %>
+    <%= f.input :outing_date, as: :date, html5: true, autofocus: true, label: "Date" %>
   </div>
   <div class="small-2 columns">
-    <%= f.input :outing_time, html5: true %>
+    <%= f.input :time_text, label: "Time-24 Format", placeholder: "HH:MM" %>
   </div>
   <div class="small-7 columns">
     <%= f.label :location_id %>
@@ -21,10 +21,10 @@
   </div>
 
   <div class="small-4 columns">
-    <%= f.input :transparancy, :collection => Observation::TRANS_HASH.sort.map {|k,v| [v,k]} %>
+    <%= f.input :transparency, :collection => Observation::TRANS_HASH.sort.map {|k,v| [v,k]} %>
   </div>
   <div class="small-4 columns">
-    <%= f.input :limiting_magnatude %>
+    <%= f.input :limiting_magnitude %>
   </div></div>
 <div class="row">
   <div class="small-12 columns">

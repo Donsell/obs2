@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150417020522) do
+ActiveRecord::Schema.define(version: 20150422023211) do
 
   create_table "admins", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -90,6 +90,14 @@ ActiveRecord::Schema.define(version: 20150417020522) do
     t.datetime "updated_at"
   end
 
+  create_table "filters", force: true do |t|
+    t.integer  "user_id"
+    t.text     "make"
+    t.text     "model"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "location_types", force: true do |t|
     t.text     "name"
     t.text     "description"
@@ -122,20 +130,35 @@ ActiveRecord::Schema.define(version: 20150417020522) do
     t.time     "outing_time"
     t.integer  "site_id"
     t.integer  "seeing"
-    t.integer  "limiting_magnatude"
-    t.integer  "transparancy"
+    t.integer  "limiting_magnitude"
+    t.integer  "transparency"
     t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "sessions", force: true do |t|
+  create_table "program_bodies", force: true do |t|
+    t.integer  "program_id"
+    t.integer  "body_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "name"
+  end
+
+  create_table "program_observations", force: true do |t|
     t.integer  "user_id"
-    t.date     "date"
-    t.time     "time"
-    t.integer  "site_id"
-    t.integer  "seeing"
-    t.integer  "transparancy"
+    t.integer  "program_id"
+    t.integer  "observation_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "body_id"
+  end
+
+  create_table "programs", force: true do |t|
+    t.text     "name"
+    t.text     "desc"
+    t.integer  "num_silver"
+    t.integer  "num_gold"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

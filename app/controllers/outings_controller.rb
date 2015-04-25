@@ -16,8 +16,8 @@ class OutingsController < ApplicationController
   end
 
   def new
-    @outing = Outing.new(outing_params)
-    #@outing = Outing.new
+    #@outing = Outing.new(outing_params)
+    @outing = Outing.new
     @outing.user_id = current_user.id
     respond_with(@outing)
   end
@@ -47,6 +47,7 @@ class OutingsController < ApplicationController
     end
 
     def outing_params
-      params.require(:outing).permit(:user_id, :outing_date, :outing_time, :site_id, :seeing, :limiting_magnatude, :transparancy, :description, observations_attributes: [:id, :user_id, :body_id, :obs_date, :obs_time, :seeing, :transparancy, :telescope_id, :eyepiece_id, :filter_id, :note, :_destroy, :outing_id])
+      #params.require(:outing).permit(:user_id, :outing_date, :outing_time, :site_id, :seeing, :limiting_magnitude, :transparency, :description, observations_attributes: [:id, :user_id, :body_id, :obs_date, :obs_time, :seeing, :transparency, :telescope_id, :eyepiece_id, :filter_id, :note, :_destroy, :outing_id])
+      params.require(:outing).permit(:user_id, :outing_date, :outing_time, :site_id, :seeing, :limiting_magnitude, :transparency, :description, :time_text)
     end
 end

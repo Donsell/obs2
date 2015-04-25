@@ -1,0 +1,12 @@
+<ul class="tabs" data-tab>
+<% tab_num = 1 %>
+<% programs.each do |program|  %>
+  <% if tab_num == 1 %>
+    <li class="tab-title active"><a href="#panel<%= tab_num.to_s%>"><%= program.name %></a></li>
+   <% else %>
+    <li class="tab-title"><a href="#panel<%= tab_num.to_s%>"><%= program.name %></a></li>
+  <% end %>
+  <% tab_num = tab_num +1 %>
+<% end %>
+</ul>
+

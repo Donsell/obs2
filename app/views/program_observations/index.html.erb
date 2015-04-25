@@ -1,0 +1,29 @@
+<h1>Listing program_observations</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Program</th>
+      <th>Observation</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @program_observations.each do |program_observation| %>
+      <tr>
+        <td><%= program_observation.user_id %></td>
+        <td><%= program_observation.program_id %></td>
+        <td><%= program_observation.observation_id %></td>
+        <td><%= link_to 'Show', program_observation %></td>
+        <td><%= link_to 'Edit', edit_program_observation_path(program_observation) %></td>
+        <td><%= link_to 'Destroy', program_observation, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Program observation', new_program_observation_path %>

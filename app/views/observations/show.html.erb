@@ -1,63 +1,44 @@
 <p id="notice"><%= notice %></p>
 
+  <%= render partial: 'bodies/body', locals: {body: @observation.body}  %>
+  <hr>
+
+  <%="#{'Viewed On: ' + ' ' + @observation.obs_date.strftime('%y/%m/%d') + ' @ ' + @observation.obs_time.strftime('%H:%M')}"  %><br>
+
+  <%= "#{'Location: ' + @observation.outing.site.name}" %><br>
+
 <p>
-  <strong>User:</strong>
-  <%= @observation.user_id %>
+  <%= "#{'Seeing: ' + Observation::SEEING_HASH[@observation.seeing]}"%>
 </p>
 
 <p>
-  <strong>Session:</strong>
-  <%= @observation.outing_id %>
+  <%= "#{'Transparency: ' + Observation::TRANS_HASH[@observation.transparency]}" %>
 </p>
 
 <p>
-  <strong>Body:</strong>
-  <%= @observation.body_id %>
-</p>
+  <%= "#{'Naked Eye Limiting Magnitude: ' + @observation.outing.limiting_magnitude.to_s}" %>
 <p>
-  <strong>Catalog:</strong>
-  <%= @observation.catalog_name %>
+  <%= "#{'Telescope: ' + @observation.telescope.telescope_name}" %>
 </p>
 
 <p>
-  <strong>Obs date:</strong>
-  <%= @observation.obs_date %>
+  <%= "#{'Eyepiece: ' + @observation.eyepiece.eyepiece_name + ' Magnifcation: ' + @observation.magnification}x"  %>
 </p>
 
 <p>
-  <strong>Obs time:</strong>
-  <%= @observation.obs_time %>
-</p>
-
-<p>
-  <strong>Seeing:</strong>
-  <%= @observation.seeing %>
-</p>
-
-<p>
-  <strong>Transparency:</strong>
-  <%= @observation.transparency %>
-</p>
-
-<p>
-  <strong>Telescope:</strong>
-  <%= @observation.telescope.make %>
-</p>
-
-<p>
-  <strong>Eyepiece:</strong>
-  <%= @observation.eyepiece_id %>
-</p>
-
-<p>
-  <strong>Filter:</strong>
-  <%= @observation.filter_id %>
+  <% if @observation.filter_id.present? %>
+    <%= "#{'Filter: ' + @observation.filter.filter_name}" %>
+  <% end %>
 </p>
 
 <p>
   <strong>Note:</strong>
   <%= @observation.note %>
 </p>
-
-<%= link_to 'Edit', edit_observation_path(@observation) %> |
-<%= link_to 'Back', observations_path %>
+<hr>
+<% if @other_obs.count > 0 %>
+   <h2>Other Observations of this Object</h2>
+   <%= render partial: 'observations/observations', locals: {obs: @other_obs} %>
+<% end %>
+<%= link_to 'Edit', edit_outing_observation_path(@observation.outing_id, @observation) %> |
+<%= link_to 'Back', outing_path(@observation.outing_id) %>

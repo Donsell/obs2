@@ -2,8 +2,6 @@ class ObservationsController < ApplicationController
   before_action :set_observation, only: [:show, :edit, :update, :destroy]
   before_filter :authenticate_user!
 
-
-
   # GET /observations
   # GET /observations.json
   def index
@@ -13,7 +11,7 @@ class ObservationsController < ApplicationController
   # GET /observations/1
   # GET /observations/1.json
   def show
-
+    @other_obs = Observation.where(user_id: current_user, body_id: @observation.body_id).where.not(id: params[:id])
   end
 
   # GET /observations/new
@@ -23,7 +21,7 @@ class ObservationsController < ApplicationController
     @observation.outing_id = @outing.id
     @observation.obs_date = @outing.outing_date
     @observation.obs_time = @outing.outing_time
-    @observation.transparency = @outing.transparancy
+    @observation.transparency = @outing.transparency
     @observation.seeing = @outing.seeing
     @catalogs = Catalog.order(:catalog).select(:catalog).uniq.map(&:catalog)
 
@@ -41,6 +39,7 @@ class ObservationsController < ApplicationController
   # POST /observations.json
   def create
     @observation = Observation.new(observation_params)
+
 
     respond_to do |format|
       if @observation.save

@@ -1,0 +1,14 @@
+<%= simple_form_for(@filter) do |f| %>
+  <%= f.error_notification %>
+
+  <%= f.input :user_id, :as => :hidden, :input_html => {:value => current_user.id} %>
+
+  <div class="form-inputs">
+    <%= f.input :make %>
+    <%= f.input :model %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

@@ -13,6 +13,7 @@ class BodiesController < ApplicationController
   # GET /bodies/1
   # GET /bodies/1.json
   def show
+    @other_obs = Observation.where(user_id: current_user, id: params[:id])
   end
 
   # GET /bodies/new

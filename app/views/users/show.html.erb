@@ -1,16 +1,16 @@
-<% unless @user.telescopes.empty? %>
-  <h3>Telescopes</h3>
-  <%= link_to 'New', new_telescope_path %>
-  <%= render 'layouts/telescopes' %>
+<h3>Telescopes</h3>
+<%= link_to 'New', new_telescope_path %>
+<%= render 'layouts/telescopes' %>
 
 <h3>Eyepieces</h3>
 <%= link_to 'New', new_eyepiece_path %>
 <%= render 'layouts/eyepieces' %>
 
+<h3>Filters<h3>
+<%= link_to 'New', new_filter_path %>
+<%= render 'layouts/filters' %>
+
 <h3>Observing Sites</h3>
 <%= link_to 'New', new_site_path %>
 <%= render 'layouts/sites' %>
-
-
-<% end %>
 

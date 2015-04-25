@@ -1,0 +1,28 @@
+<div class="row">
+  <div class="small-1 columns">Date</div>
+  <div class="small-1 columns">Time</div>
+  <div class="small-2 columns">Object</div>
+  <div class="small-2 columns">AKA</div>
+  <div class="small-3 columns">Description</div>
+  <div class="small-3 columns">&nbsp</div>
+</div>
+<% obs.each do |obs| %>
+  <div class="row">
+      <div class="small-1 columns"><%= obs.obs_date.strftime("%y/%m/%d") %></div>
+      <div class="small-1 columns"><%= obs.obs_time.strftime("%H:%M") %></div>
+      <div class="small-2 columns"><%= obs.body.name %></div>
+      <% unless obs.body.alt_name.blank? %>
+        <div class="small-2 columns"><%= obs.body.alt_name %></div>
+      <% else %>
+        <div class="small-2 columns">&nbsp</div>
+      <% end -%>
+      <div class="small-3 columns"><%= obs.body.proper_name %></div>
+      <div class="small-1 columns"> <%= link_to'Details', observation_path(:id => obs.id) %></div>
+      <div class="small-1 columns"><%= link_to 'Edit', edit_outing_observation_path(obs.outing, obs) %></div>
+      <div class="small-1 columns"><%= link_to 'Destroy', obs, method: :delete, data: { confirm: 'Are you sure?'} %></div>
+   </div>
+   <div class="row">
+    <div class="small-12 columns"><%= obs.note %></div>
+  </div>
+  <div class="row">&nbsp</div>
+<% end %>

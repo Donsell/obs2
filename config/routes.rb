@@ -1,4 +1,12 @@
 Rails.application.routes.draw do
+  resources :program_observations
+
+  resources :program_bodies
+
+  resources :programs
+
+  resources :filters
+
   resources :location_types
 
   resources :outings do

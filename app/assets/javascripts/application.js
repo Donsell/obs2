@@ -35,3 +35,5 @@ $(function() {
 $(document).on("page:load ready", function(){
     $("input.datepicker").datepicker({ dateFormat: 'yy-mm-dd' });
 });
+
+$(function(){ $(document).foundation(); });

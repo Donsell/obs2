@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @program_observation.user_id %>
+</p>
+
+<p>
+  <strong>Program:</strong>
+  <%= @program_observation.program_id %>
+</p>
+
+<p>
+  <strong>Observation:</strong>
+  <%= @program_observation.observation_id %>
+</p>
+
+<%= link_to 'Edit', edit_program_observation_path(@program_observation) %> |
+<%= link_to 'Back', program_observations_path %>
