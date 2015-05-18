@@ -10,6 +10,8 @@ class OutingsController < ApplicationController
   end
 
   def show
+      @print = params[:print]
+
 #      @outings = Outing.where(user_id:  current_user.id)
 #    @outs = Array.new
 #    respond_with(@outings)

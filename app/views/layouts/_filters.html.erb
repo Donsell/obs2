@@ -1,17 +1,18 @@
   <table>
-    <thread>
+    <thead>
       <tr>
         <th>Make</th>
         <th>Model</th>
+        <th colspan="3"></th>
       </tr>
-    </thread>
+    </thead>
     <tbody>
       <% @user.filters.each do |filter| %>
         <tr>
           <td><%= filter.make %></td>
           <td><%= filter.model  %>
-          <td><%= link_to 'Edit', edit_filter_path(filter) %></td>
-          <td><%= link_to 'Destroy', filter, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <td><%= link_to 'Edit', edit_filter_path(filter), class: "tabular small button" %></td>
+          <td><%= link_to 'Destroy', filter, method: :delete, data: { confirm: 'Are you sure?' }, class: "tabular small button" %></td>
         </tr>
       <% end %>
     </tbody>

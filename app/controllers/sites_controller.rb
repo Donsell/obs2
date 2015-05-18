@@ -6,16 +6,18 @@ class SitesController < ApplicationController
 
   def index
     @sites = Site.all
-    respond_with(@sites)
+    redirect_to ({controller: "equipment", id: "sites"})
   end
 
   def show
-    respond_with(@site)
+    redirect_to ({controller: "equipment", id: "sites"})
+     #redirect_to (@site)
   end
 
   def new
     @site = Site.new
-    respond_with(current_user)
+      #redirect_to ({controller: "equipment", id: "sites"})
+       #redirect_to (current_user)
   end
 
   def edit
@@ -24,17 +26,23 @@ class SitesController < ApplicationController
   def create
     @site = Site.new(site_params)
     flash[:notice] = 'Site was successfully created.' if @site.save
-    respond_with(current_user)
+    redirect_to ({controller: "equipment", id: "sites"})
+
+     #redirect_to (current_user)
   end
 
   def update
     flash[:notice] = 'Site was successfully updated.' if @site.update(site_params)
-    respond_with(current_user)
+     #redirect_to (current_user)
+    redirect_to ({controller: "equipment", id: "sites"})
+
   end
 
   def destroy
     @site.destroy
-    respond_with(current_user)
+     redirect_to ({controller: "equipment", id: "sites"})
+
+    #espond_with(current_user)
   end
 
   private

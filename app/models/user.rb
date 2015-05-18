@@ -10,4 +10,13 @@ class User < ActiveRecord::Base
   has_many :observations, dependent: :destroy
   has_many :filters, dependent: :destroy
   has_many :program_observations, dependent: :destroy
+  serialize :sites_obs
+  serialize :prog_obs
+  before_create :create_stat
+
+  def create_stat
+    self.sites_obs = Hash.new
+    self.prog_obs = Hash.new
+    self.obs = 0
+  end
  end

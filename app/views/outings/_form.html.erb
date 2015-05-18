@@ -12,7 +12,7 @@
   </div>
   <div class="small-7 columns">
     <%= f.label :location_id %>
-    <%= f.collection_select  :site_id, Site.all, :id, :name %>
+    <%= f.collection_select  :site_id, Site.where(user_id: :user_id), :id, :name %>
   </div>
 </div>
 <div class="row">
@@ -25,13 +25,16 @@
   </div>
   <div class="small-4 columns">
     <%= f.input :limiting_magnitude %>
-  </div></div>
+  </div>
+</div>
 <div class="row">
   <div class="small-12 columns">
     <%= f.input :description %>
   </div>
 </div>
   <div class="form-actions">
-    <%= f.button :submit %>
+    <div class="small-3 columns">
+      <%= f.button :submit, class: "secondary small button" %>
+    </div>
   </div>
 <% end %>

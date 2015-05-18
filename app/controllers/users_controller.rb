@@ -6,10 +6,13 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(current_user.id)
+    #@user = User.find(current_user.id)
+    @user = current_user
+    @outings = Outing.where(user_id: current_user).includes(:observations)
     unless @user == current_user || current_user.admin?
       redirect_to :back, :alert => "Access denied."
     end
   end
 
 end
+

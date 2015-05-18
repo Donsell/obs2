@@ -1,16 +1,16 @@
  <p id="notice"><%= notice %></p>
-
-<%= render partial: 'body', locals: {body: @body}  %>
+<% cache(cache_key_for_bodies(@body.id)) do %>
+	<%= render partial: 'body', locals: {body: @body}  %>
+<% end %>
 <% if @other_obs.count > 0 %>
   <h3>Observations of this Object</h3>
-  <%= render partial: 'observations/observations', locals: {obs: @other_obs} %>
+  <% cache(cache_key_for_observations(@body.id, @other_obs.count)) do %>
+	  <%= render partial: 'observations/observations', locals: {obs: @other_obs} %>
+  <% end %>
+  <br>
 <% else %>
   <h3>You've logged no observations of this object.</h3>
 <% end %>
 
-<% if @body.id > 1 %>
-  <%= link_to 'Previous', body_path(@body.id - 1) %> |
-<% end %>
-  <%= link_to 'Next', body_path(@body.id + 1) %> |
-<%= link_to 'Edit', edit_body_path(@body) %> |
-<%= link_to 'Back', bodies_path %>
+
+<%= link_to 'Back', :back, class: "secondary small button" %>

@@ -3,19 +3,41 @@
 
   <div class="form-inputs">
 
-    <%= f.input :user_id, :as => :hidden, :input_html => {:value => current_user.id } %> 
-
-    <%= f.input :make %>
-
-    <%= f.input :model %>
-
-    <%= f.input :focal_length %>
-
-    <%= f.input :afov %>
+    <%= f.input :user_id, :as => :hidden, :input_html => {:value => current_user.id } %>
+    <div class="row">
+      <div class="small-3 columns">
+        &nbsp
+      </div>
+      <div class="small-3 columns">
+        <%= f.input :make, label: false, placeholder: "Manufacturer" %>
+      </div>
+      <div class="small-3 columns">
+        <%= f.input :model, label: false, placeholder: "Model" %>
+      </div>
+      <div class="small-3 columns">
+        &nbsp
+      </div>
+    </div>
+    <div class="row">
+      <div class="small-3 columns">
+        &nbsp
+      </div>
+      <div class="small-3 columns">
+        <%= f.input :focal_length, label: false,  placeholder: "Focal  Length in mm" %>
+      </div>
+      <div class="small-3 columns">
+        <%= f.input :afov, label: false, placeholder: "Apparent Field of View" %>
+      </div>
+      <div class="small-3 columns">
+        &nbsp
+      </div>
+    </div>
 
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit %>
+    <div class="small-3 columns">
+      <%= f.button :submit, class: "secondary small button" %>
+    </div>
   </div>
 <% end %>

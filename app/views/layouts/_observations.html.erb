@@ -1,0 +1,133 @@
+<div class="observation">
+      <% if @program.blank? %>
+        <% pronum = 0 %>
+      <% else %>
+        <% pronum = @program.id %>
+      <% end %>
+      <div class="row">
+        <% if pronum == 1 %>
+          <div class="small-7 columns">
+            <%= body.alt_name %>
+            <%= "#{'(' + body.name.strip + ')' }" %>
+            <%= body.proper_name %>
+          </div>
+        <% else %>
+          <div class="small-7 columns">
+            <%= body.name.strip %>
+            <%= "#{'(' + body.alt_name.strip + ')'} " unless body.alt_name.strip.empty? %>
+            <%= body.proper_name %>
+          </div>
+        <% end %>
+        <div class="small-2 columns">
+          <span class="hide-for-print">
+            Date:
+          </span>
+          <%= observation.obs_date.strftime("%m/%d/%Y") unless observation.body_id.blank?  %>
+        </div>
+        <div class="small-3 columns">
+          <span class="hide-for-print">
+            Time:
+          </span>
+          <%= observation.obs_time.strftime("%I:%m %p") unless observation.body_id.blank? %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="small-3 columns">
+          Class:
+          <%= body.class_id %>
+        </div>
+        <div class="small-5 columns">
+          RA:
+          <%= body.ra %>
+          Dec:
+          <%= format_declination(body.declination) %>
+        </div>
+        <div class="small-2 columns">
+          <span class="hide-for-print">
+            Magnitude:
+            <%= body.magnitude unless body.magnitude == 99.9 %>
+          </span>
+          <span class="print-only">
+            Mag:
+            <%= body.magnitude unless body.magnitude == 99.9 %>
+          </span>
+        </div>
+        <div class="small-2 columns">
+          <span class="hide-for-print">
+            Size:
+          </span>
+          <% if body.size_max.present? %>
+                    <%= "#{format_size(body.size_max.strip)}" %>
+                    <% if body.size_min.present? %>
+                        <%= "#{ 'x' + format_size(body.size_min.strip)}" %>
+                    <% end %>
+                <% end %>
+              </div>
+      </div>
+      <div class="row">
+        <div class="small-12 columns">
+        Location:
+         <% unless  observation.body_id.blank? %>
+          <%= observation.outing.site.name %>
+          <%= "#{observation.outing.site.latitude.to_s.strip + ','}" %>
+          <%= observation.outing.site.longitude %>
+        <% end %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="small-4 columns">
+          <span class="hide-for-print">
+            Seeing:
+          </span>
+          <%= Observation::SEEING_HASH[observation.seeing] unless observation.body_id.blank?%>
+        </div>
+        <div class="small-4 columns" %>
+          <span class="hide-for-print">
+            Trans:
+          </span>
+          <%= Observation::TRANS_HASH[observation.transparency] unless observation.body_id.blank? %>
+        </div>
+        <div class="small-4 columns">
+          <span class="hide-for-print">
+            Naked Eye Limiting Magnitude:
+            <%= observation.outing.limiting_magnitude unless observation.body_id.blank?%>
+          </span>
+          <span class="print-only">
+            NELM:
+                <%= observation.outing.limiting_magnitude unless observation.body_id.blank?%>
+          </span>
+          <span>
+          </span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="small-4 columns">
+            <span class="hide-for-print">
+              Telescope:
+            </span>
+            <%= "#{observation.telescope.make  + ' ' +  observation.telescope.model  +  '  ' + observation.telescope.focal_length.to_s  + 'mm' }" unless observation.body_id.blank? %>
+        </div>
+        <div class="small-4 columns">
+          <span class="hide-for-print">
+            Eyepiece:
+          </span>
+          <%= "#{observation.eyepiece.make + ' ' + observation.eyepiece.model  +  ' '  + observation.magnification + 'x'  }" unless observation.body_id.blank?%>
+        </div>
+        <div class="small-4 columns">
+          <span class="hide-for-print">
+            Filter:
+          </span>
+          <% unless observation.body_id.blank? %>
+            <% unless observation.filter.blank? %>
+              <%= observation.filter.make + ' ' + observation.filter.model %>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="small-12 columns">
+          Notes:
+            <%= observation.note unless observation.body_id.blank? %>
+        </div>
+      </div>
+    </div>

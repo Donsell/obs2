@@ -8,26 +8,45 @@
     <% end %>
     <% tab_num = tab_num + 1 %>
     <% program_bodies = ProgramBody.where(program_id: program.id).order(:name) %>
-    <% program_bodies.each do |body| %>
-      <% prog_obs = ProgramObservation.where(program_id: program.id, user_id: current_user.id, body_id: body.body_id) %>
-      <% if prog_obs.count > 0 %>
-        <div class="row">
-          <div class="small-2 columns"><%= body.body.name %></div>
-          <div class="small-2 columns"><%= body.body.alt_name %></div>
-          <div class="small-4 columns"><%= body.body.proper_name %></div>
-          <div class="small-1 columns">&nbsp</div>
-          <div class="small-3 columns">Object Viewed <%= pluralize(prog_obs.count, 'time') %></div>
-        </div>
-      <% else %>
-        <div class="row">
-          <div class="small-2 columns"><%= body.body.name %></div>
-          <div class="small-2 columns"><%= body.body.alt_name %></div>
-          <div class="small-4 columns"><%= body.body.proper_name %></div>
-          <div class="small-1 columns">&nbsp</div>
-          <div class="small-3 columns">Object Not Viewed</div>
-        </div>
-      <% end %>
-    <% end %>
+    <% cache(cache_key_for_programs(program.id)) do %>
+      <table id='programs' class="display">
+      <thead>
+        <tr>
+            <% if program.id == 1 %>
+              <th>M#</th>
+            <% end %>
+            <th>Body</th>
+            <th>AKA</th>
+            <th>Body Type</th>
+            <th>Constellation</th>
+            <th>Status</th>
+        </tr>
+      </thead>
+
+        <tbody>
+          <% program_bodies.each do |body| %>
+            <% prog_obs = ProgramObservation.where(program_id: program.id, user_id: current_user.id, body_id: body.body_id) %>
+            <tr>
+              <% if program.id == 1 %>
+                <% num = body.body.alt_name.split(' ') %>
+                <td><%= num[1].to_i %></td>
+              <% end %>
+              <td><%= link_to(body.body.name, body_path(body.body_id), class: "tabular small button") %></td>
+              <td><%= body.body.alt_name %></td>
+              <td><%= body.body.body_type.description %></td>
+              <td><%= body.body.constellation.constellation %>
+              <% if prog_obs.count > 0 %>
+                <td>Object Viewed <%= pluralize(prog_obs.count, 'time') %></td>
+              <% else %>
+                <td>Object Not Viewed</td>
+              <% end %>
+            </tr>
+          <% end %>
+       </tbody>
+    </table>
+    <br>
+    <%= link_to "#{program.name + '  ' + 'Log'}" , program, class: "secondary small button"  if program.id == tab_num - 1 %>
     </div>
+     <% end %>
   <% end %>
 </div>

@@ -4,11 +4,25 @@
   <%= f.input :user_id, :as => :hidden, :input_html => {:value => current_user.id} %>
 
   <div class="form-inputs">
-    <%= f.input :make %>
-    <%= f.input :model %>
+    <div class="row">
+        <div class="small-3 columns">
+        &nbsp
+      </div>
+      <div class="small-3 columns">
+        <%= f.text_field :make, label: false, placeholder: "Manufacturer" %>
+      </div>
+      <div class="small-3 columns">
+        <%= f.text_field :model, label: false, placeholder: "Model" %>
+      </div>
+      <div class="small-3 columns">
+        &nbsp
+      </div>
   </div>
+</div>
 
   <div class="form-actions">
-    <%= f.button :submit %>
+    <div class="small-3 columns">
+      <%= f.button :submit, class: "secondary small button" %>
+    </div>
   </div>
 <% end %>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150422023211) do
+ActiveRecord::Schema.define(version: 20150518001710) do
 
   create_table "admins", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -72,6 +72,8 @@ ActiveRecord::Schema.define(version: 20150422023211) do
     t.datetime "updated_at"
   end
 
+  add_index "catalogs", ["body_id"], name: "index_catalogs_on_body_id"
+
   create_table "constellations", force: true do |t|
     t.text     "abbr"
     t.text     "constellation"
@@ -90,6 +92,8 @@ ActiveRecord::Schema.define(version: 20150422023211) do
     t.datetime "updated_at"
   end
 
+  add_index "eyepieces", ["user_id"], name: "index_eyepieces_on_user_id"
+
   create_table "filters", force: true do |t|
     t.integer  "user_id"
     t.text     "make"
@@ -97,6 +101,8 @@ ActiveRecord::Schema.define(version: 20150422023211) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "filters", ["user_id"], name: "index_filters_on_user_id"
 
   create_table "location_types", force: true do |t|
     t.text     "name"
@@ -124,6 +130,10 @@ ActiveRecord::Schema.define(version: 20150422023211) do
     t.text     "catalog_num"
   end
 
+  add_index "observations", ["body_id"], name: "index_observations_on_body_id"
+  add_index "observations", ["outing_id"], name: "index_observations_on_outing_id"
+  add_index "observations", ["user_id"], name: "index_observations_on_user_id"
+
   create_table "outings", force: true do |t|
     t.integer  "user_id"
     t.date     "outing_date"
@@ -137,6 +147,8 @@ ActiveRecord::Schema.define(version: 20150422023211) do
     t.datetime "updated_at"
   end
 
+  add_index "outings", ["user_id"], name: "index_outings_on_user_id"
+
   create_table "program_bodies", force: true do |t|
     t.integer  "program_id"
     t.integer  "body_id"
@@ -144,6 +156,8 @@ ActiveRecord::Schema.define(version: 20150422023211) do
     t.datetime "updated_at"
     t.string   "name"
   end
+
+  add_index "program_bodies", ["body_id"], name: "index_program_bodies_on_body_id"
 
   create_table "program_observations", force: true do |t|
     t.integer  "user_id"
@@ -153,6 +167,8 @@ ActiveRecord::Schema.define(version: 20150422023211) do
     t.datetime "updated_at"
     t.integer  "body_id"
   end
+
+  add_index "program_observations", ["user_id"], name: "index_program_observations_on_user_id"
 
   create_table "programs", force: true do |t|
     t.text     "name"
@@ -174,6 +190,8 @@ ActiveRecord::Schema.define(version: 20150422023211) do
     t.integer  "location_type_id"
   end
 
+  add_index "sites", ["user_id"], name: "index_sites_on_user_id"
+
   create_table "telescopes", force: true do |t|
     t.integer  "user_id"
     t.string   "make"
@@ -184,6 +202,8 @@ ActiveRecord::Schema.define(version: 20150422023211) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "telescopes", ["user_id"], name: "index_telescopes_on_user_id"
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "",    null: false
@@ -212,6 +232,9 @@ ActiveRecord::Schema.define(version: 20150422023211) do
     t.string   "invited_by_type"
     t.integer  "invitations_count",      default: 0
     t.boolean  "admin",                  default: false
+    t.integer  "obs"
+    t.text     "sites_obs"
+    t.text     "prog_obs"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

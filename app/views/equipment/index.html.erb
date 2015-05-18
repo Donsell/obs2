@@ -1,0 +1,26 @@
+<h3>&nbsp</h3>
+<h3>Sites and Equipment</h3>
+<ul class="tabs" data-tab>
+	<li class="tab-title active"><a href="#Sites">Sites</a></li>
+	<li class="tab-title"><a href="#Telescopes">Telescopes</a></li>
+	<li class="tab-title"><a href="#Eyepieces">Eyepieces</a></li>
+	<li class="tab-title"><a href="#Filters">Filters</a></li>
+</ul>
+<div class="tabs-content">
+	<div class="content <%= @id == 'sites' ? 'active' : ''%>",  id="Sites">
+		<%= render 'layouts/sites' %>
+		<%= link_to 'Add Site', new_site_path, class: "secondary small button" %>
+	</div>
+	<div class="content <%= @id == 'telescopes' ? 'active' : ''%>" id="Telescopes">
+		<%= render 'layouts/telescopes' %>
+		<%= link_to 'Add Telescope', new_telescope_path, class: "secondary small button" %>
+</div>
+	<div class="content <%= @id == 'eyepieces' ? 'active' : ''%>" id="Eyepieces">
+		<%= render 'layouts/eyepieces' %>
+		<%= link_to 'Add Eyepiece', new_eyepiece_path, class: "secondary small button" %>
+	</div>
+	<div class="content <%= @id == 'filters' ? 'active' : ''%>" id="Filters">
+		<%= render 'layouts/filters' %>
+		<%= link_to 'Add Filter', new_filter_path, class: "secondary small button" %>
+	</div>
+</div>

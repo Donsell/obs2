@@ -6,6 +6,7 @@ class TelescopesController < ApplicationController
   # GET /telescopes.json
   def index
     @telescopes = Telescope.all
+    redirect_to({controller: "equipment", id: "telescopes"})
   end
 
   # GET /telescopes/1
@@ -30,7 +31,7 @@ class TelescopesController < ApplicationController
 
     respond_to do |format|
       if @telescope.save
-        format.html { redirect_to user_path(current_user), notice: 'Telescope was successfully created.' }
+        format.html { redirect_to({controller: "equipment", id: "telescopes"}, notice: 'Telescope was successfully created.' )}
         format.json { render :show, status: :created, location: @telescope }
       else
         format.html { render :new }
@@ -44,7 +45,7 @@ class TelescopesController < ApplicationController
   def update
     respond_to do |format|
       if @telescope.update(telescope_params)
-        format.html { redirect_to user_path(current_user), notice: 'Telescope was successfully updated.' }
+        format.html {     redirect_to({controller: "equipment", id: "telescopes"}, notice: 'Telescope was successfully updated.' )}
         format.json { render :show, status: :ok, location: @telescope }
       else
         format.html { render :edit }
@@ -58,7 +59,7 @@ class TelescopesController < ApplicationController
   def destroy
     @telescope.destroy
     respond_to do |format|
-      format.html { redirect_to user_path(current_user), notice: 'Telescope was successfully destroyed.' }
+      format.html { redirect_to({controller: "equipment", id: "telescopes"}, notice: 'Telescope was successfully destroyed.' )}
       format.json { head :no_content }
     end
   end

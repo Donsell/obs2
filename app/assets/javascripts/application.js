@@ -11,8 +11,9 @@
 // about supported directives.
 //
 //= require jquery
-//= require jquery.ui.autocomplete
-//= require jquery_ujs
+// require.jquery.ui
+// require jquery.ui.autocomplete
+// require jquery_ujs
 // require jquery_turbolinks
 // require jquery-ui.datepicker
 //= require turbolinks
@@ -22,18 +23,24 @@
 // require moment
 // require bootstrap-datetimepicker
 // require pickers
+//= require datatables/jquery.dataTables
+//= require underscore
+// require gmaps/google
 //= require_tree .
+
 
 $(function() {
   $(document).foundation();
 });
-
-//$(function() {
-  //$('.datepicker').datepicker();
-//});
 
 $(document).on("page:load ready", function(){
     $("input.datepicker").datepicker({ dateFormat: 'yy-mm-dd' });
 });
 
 $(function(){ $(document).foundation(); });
+
+
+$('#myTabs').on('toggled', function (event, tab) {
+  console.log(tab);
+});
+

@@ -1,15 +1,15 @@
 
 <table>
-  <thead>
-    <tr>
+  <tr>
+    <thead>
       <th>Make</th>
       <th>Model</th>
       <th>Focal length</th>
       <th>F ratio</th>
       <th>Diameter</th>
       <th colspan="3"></th>
-    </tr>
-  </thead>
+    </thead>
+  </tr>
   <% @user.telescopes.each do |telescope| %>
   <tr>
     <td><%= telescope.make %></td>
@@ -17,8 +17,8 @@
     <td><%= telescope.focal_length %></td>
     <td><%= telescope.f_ratio %></td>
     <td><%= telescope.diameter %></td>
-    <td><%= link_to 'Edit', edit_telescope_path(telescope) %></td>
-    <td><%= link_to 'Destroy', telescope, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= link_to 'Edit', edit_telescope_path(telescope), class: "tabular small button" %></td>
+    <td><%= link_to 'Destroy', telescope, method: :delete, data: { confirm: 'Are you sure?' }, class: "tabular small button" %></td>
   </tr>
   <% end %>
 </table>

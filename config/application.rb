@@ -36,5 +36,7 @@ module Obs2
     # For Foundation 5
     config.assets.precompile += %w( vendor/modernizr )
 
+    config.middleware.use PDFKit::Middleware
+
   end
 end

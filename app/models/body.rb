@@ -10,7 +10,7 @@ class Body < ActiveRecord::Base
   end
 
   def ra
-  	right_ascension.strftime('%Hh %mm %Ss')
+  	right_ascension.strftime('%Hh %Mm %Ss')
 	end
 
 end

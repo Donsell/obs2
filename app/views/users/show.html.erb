@@ -1,16 +1,37 @@
-<h3>Telescopes</h3>
-<%= link_to 'New', new_telescope_path %>
-<%= render 'layouts/telescopes' %>
+<h2>Welcome Back!</h2>
+<div class="name"><%= current_user.name %></div>
+<div class="stats">
+	<div class="sites">
+		<% if current_user.sites_obs.nil? %>
+			You've logged no observations
+		<% else %>
+			<ul>
+			<% current_user.sites_obs.each do |site, obs|%>
+				<% loc = Site.find(site.to_i) %>
+				<li>You've observed <%= "#{obs.to_s} " 'object'.pluralize(obs) %> from <%= "#{loc.name}" %></li>
+			<% end %>
+			</ul>
+		<% end %>
+	</div>
+	<div class="programs">
+		<% if current_user.prog_obs.nil? %>
+			You've logged no observations in any program.
+		<% else %>
+			<ul>
+				<% @chart_data = Array.new %>
+					<% current_user.prog_obs.each do |prog, obs| %>
+					<% prg = Program.find(prog.to_i) %>
+					<% @chart_data << [prg.name, (obs.to_f/100.to_f) * 100] %>
+					<% @chart_data << ['Other Program', 100] %>
+					<li>You've observed <%= "#{obs.to_s} " 'object'.pluralize(obs) %> in the <%= "#{prg.name}" %> program. </li>
+				<% end %>
+			</ul>
+			<div class="stats">
+				<% options = {title: "Progress on Programs"} %>
+				<%= bar_chart @chart_data, library: {title: "Program Progress", hAxis: {title: "Percent Complete"} } %>				
 
-<h3>Eyepieces</h3>
-<%= link_to 'New', new_eyepiece_path %>
-<%= render 'layouts/eyepieces' %>
-
-<h3>Filters<h3>
-<%= link_to 'New', new_filter_path %>
-<%= render 'layouts/filters' %>
-
-<h3>Observing Sites</h3>
-<%= link_to 'New', new_site_path %>
-<%= render 'layouts/sites' %>
-
+			</div>
+		<% end %>	
+		</div> 
+	
+</div>

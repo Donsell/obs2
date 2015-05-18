@@ -1,43 +1,63 @@
-  <h2><%= body.name.rstrip %>-<%= body.proper_name %></h2>
-  <% if body.alt_name? %>
-    <h3><%= "#{'Also known as:' + ' ' + body.alt_name}" %></h3>
-  <% end %>
-  <hr>
-  <% if body.class_id.present? %>
-    <%= "#{'Class: ' + body.class_id}" %><br>
-  <% end %>
-  <%= "#{'Right Ascension: '  + ' ' + body.ra}" %><br>
-  <%= "#{'Declination: ' + format_declination(body.declination)}" %><br>
-  <% if body.magnitude < 99.9 %>
-    <%= "#{'Apparent Magnitude: ' + body.magnitude.to_s}" %><br>
-  <% end %>
-  <% if body.size_max.present? %>
-      <%= "#{'Size: ' + format_size(body.size_max)}" %>
-      <% if body.size_min.present? %>
-        <%= "#{ ' x ' + format_size(body.size_min)}" %>
-      <% end %>
-      <br>
-  <% end %>
-  <% if body.surface_brightness != 99.9 %>
-    <%= "#{'Surface Brightnes: ' + body.surface_brightness.to_s}" %><br>
-  <% end %>
-  <% if body.position_angle? %>
-      <%= "#{'Postition Angle: ' + body.position_angle.to_s}\xC2\xB0" %><br>
-  <% end %>  
-  <% if body.number_of_stars? %>
-      <%= "#{'Number of Stars: ' + body.number_of_stars.to_s}" %><br>
-  <% end %>
-
-  <% if body.brightest_star_mag? %>
-      <%= "#{'Brightest Star Magnitude: ' + body.brightest_star_mag.to_s}" %><br>
-  <% end %>
-
-  <%= "#{'Can be found on Uranometria Page ' + body.uranometria.to_s + ', Sky Atlas 2000 Chart ' + body.sky_atlas_2000.to_s + ', Pocket Sky Atlas Page ' + body.pocket_sky_atlas.to_s}" %><br>
-
-  <% if body.programs.count > 0 %>
-    <% body.programs.each do |program|  %>
-      <%= "#{ body.name.rstrip + ' is in the ' + program.name + ' observing program.'}" %><br>
-    <% end %>
-  <% end %>
-  <%= "#{'NGC Description: ' + body.ngc_description}" %>
   
+    <h2><%= body.name.rstrip %>-<%= body.proper_name %></h2>
+    <% if body.alt_name? %>
+      <h3><%= "#{'Also known as:' + ' ' + body.alt_name}" %></h3>
+    <% end %>
+    <hr>
+    <div class="bodies">
+      <dl>
+        <% if body.class_id.present? %>
+            <dt>Class:</dt>
+            <dd><%= "#{body.class_id}" %></dd>
+        <% end %>
+        <dt>Right Ascension:</dt>
+        <dd><%= "#{body.ra}" %></dd>
+        <dt>Declination:</dt>
+        <dd><%= "#{format_declination(body.declination)}" %></dd>
+        <% if body.magnitude < 99.9 %>
+          <dt>Apparent Magnitude:</dt>
+          <dd><%= "#{body.magnitude.to_s}" %></dd>
+        <% end %>
+        <% if body.size_max.present? %>
+          <dt>Size:</dt>
+          <dd><%= "#{format_size(body.size_max)}" %>
+            <% if body.size_min.present? %>
+              <%= "#{ ' x ' + format_size(body.size_min)}" %>
+            <% end %>
+            </dd>
+        <% end %>
+        <% if body.surface_brightness != 99.9 %>
+          <dt>Surface Brightnes:</dt>
+          <dd><%= "#{body.surface_brightness.to_s}" %></dd>
+        <% end %>
+        <% if body.position_angle? %>
+            <dt>Postition Angle: </dt>
+            <dd><%= "#{body.position_angle.to_s}\xC2\xB0" %></dd>
+        <% end %>
+        <% if body.number_of_stars? %>
+            <dt>Number of Stars:</dt>
+            <dd><%= "#{'Number of Stars: ' + body.number_of_stars.to_s}" %></dd>
+        <% end %>
+        <% if body.brightest_star_mag? %>
+            <dt>Brightest Star Magnitude:</dt>
+            <dd><%= "#{body.brightest_star_mag.to_s}" %></dd>
+        <% end %>
+      </dl>
+      </div>
+    <div class="object-info">
+      Can be found on:<br>
+      <div class="atlas">
+        <ul>
+          <li><%= "#{'Uranometria Page ' + body.uranometria.to_s}" %></li>
+        <li><%= "#{ 'Sky Atlas 2000 Chart ' + body.sky_atlas_2000.to_s}" %></li>
+        <li><%=  "#{'Pocket Sky Atlas Page ' + body.pocket_sky_atlas.to_s}" %></li>
+        </ul>
+    </div>
+      <% if body.programs.count > 0 %>
+        <% body.programs.each do |program|  %>
+          <%= "#{ body.name.rstrip + ' is in the ' + program.name + ' observing program.'}" %><br>
+        <% end %>
+      <% end %>
+      <%= "#{'NGC Description: ' + body.ngc_description}" %>
+    </div>
+    <hr>

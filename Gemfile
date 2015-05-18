@@ -1,11 +1,11 @@
 source 'https://rubygems.org'
 ruby '2.0.0'
-gem 'rails', '4.1.4'
+gem 'rails', '4.1.9'
 gem 'rails_layout'
 gem 'sqlite3'
-gem 'sass-rails', '~> 5.0.0'
+gem 'sass-rails', '~> 5.0.1'
 gem 'uglifier', '>= 1.3.0'
-gem 'coffee-rails', '~> 4.0.0'
+gem 'coffee-rails', '~> 4.1.0'
 gem 'jquery-rails'
 # gem 'jquery_ujs'
 gem 'jquery-ui-rails', '~> 4.2.1'
@@ -17,13 +17,24 @@ gem 'spring', group: :development
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw]
 gem 'devise'
 gem 'devise_invitable'
-gem 'foundation-rails'
+gem 'foundation-rails', '~> 5.5.0'
+gem "compass-rails", github: "Compass/compass-rails", branch: "master"
+gem 'zurb-foundation','~> 4.0.0'
 #gem 'bootstrap-sass', '~> 2.3.2'
 gem 'simple_form'
-gem 'cocoon'
-gem 'simple-form-datepicker', '~> 0.1.3'
-#gem 'datetimepicker-rails', git: 'git://github.com/zpaulovics/datetimepicker-rails', tag: 'v1.0.0'
+#gem 'cocoon'
+#gem 'simple-form-datepicker', '~> 0.1.3'
 #gem 'momentjs-rails', '>= 2.8.1', git: 'git//github.com/derekprior/momentjs-rails’
+#gem 'jquery-datatables-rails', '~> 3.2.0'
+#gem 'actionpack-action_caching'
+#gem 'actionpack-page_caching'
+#gem 'gmaps4rails'
+gem 'jquery-datatables-rails', github: 'rweng/jquery-datatables-rails'
+gem 'underscore-rails'
+gem 'will_paginate', '~> 3.0.6'
+gem 'pdfkit'
+gem 'wkhtmltopdf-binary'
+gem 'chartkick'
 
 group :development do
   gem 'better_errors'
@@ -35,7 +46,7 @@ group :development do
   gem 'quiet_assets'
   gem 'rails_apps_pages'
   gem 'rails_apps_testing'
-  gem 'rails_layout'
+#  gem 'rails_layout'
   gem 'rb-fchange', :require=>false
   gem 'rb-fsevent', :require=>false
   gem 'rb-inotify', :require=>false

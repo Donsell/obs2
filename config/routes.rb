@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'registrations/update_resources'
+
+  get 'stats/create'
+
   resources :program_observations
 
   resources :program_bodies
@@ -13,6 +17,8 @@ Rails.application.routes.draw do
     resources :observations, :only => [:new, :create, :edit]
   end
 
+  resources :equipment, only: [:index]
+
   resources :sites
 
   resources :observations
@@ -25,11 +31,13 @@ Rails.application.routes.draw do
 
   resources :catalogs
 
+  resources :stats
+
   devise_for :admins
   root to: 'visitors#index'
-  devise_for :users
+  devise_for :users, controllers: {registrations: 'registrations'}
   resources :users
   resources :bodies
-  resources :telescopes
+  #resources :telescopes
   #match 'users#show', as: :user_root
 end

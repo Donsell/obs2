@@ -17,8 +17,8 @@
           <td><%= eyepiece.model %></td>
           <td><%= eyepiece.focal_length %></td>
           <td><%= eyepiece.afov %></td>
-          <td><%= link_to 'Edit', edit_eyepiece_path(eyepiece) %></td>
-          <td><%= link_to 'Destroy', eyepiece, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <td><%= link_to 'Edit', edit_eyepiece_path(eyepiece), class: "tabular small button" %></td>
+          <td><%= link_to 'Destroy', eyepiece, method: :delete, data: { confirm: 'Are you sure?' }, class: "tabular small button" %></td>
         </tr>
       <% end %>
     </tbody>

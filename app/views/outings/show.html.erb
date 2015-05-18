@@ -1,9 +1,13 @@
 <p id="notice"><%= notice %></p>
 
-<H2>Outing</H2>
+<h3>&nbsp</h3>
+<h3>Outing</h3>
 
 <%= render 'show_outing' %>
-
-<%= link_to 'Edit', edit_outing_path(@outing) %> |
-<%= link_to "Add Observation", new_outing_observation_path(@outing) %> |
-<%= link_to 'Back', outings_path %>
+<br>
+<div class="hide-for-print">
+	<% link_to 'Edit Outing', edit_outing_path(@outing), class: "secondary small button" %> 
+	<%= link_to "Add Observation", new_outing_observation_path(@outing), class: "secondary small button" %> 
+	<%= link_to "Format for Printing", outing_path(@outing, {print: "true"}), class: "secondary small button" %>
+	<%= link_to 'Back', outings_path, class: "secondary small button" %>
+</div>

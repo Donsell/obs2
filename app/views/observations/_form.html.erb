@@ -52,16 +52,18 @@
     <div class="small-12 columns">
       <%= f.input :note %>
     </div>
-
-      <div class="small-3">
-        <div class="form-actions">
-          <%= f.button :submit %>
+      <div class=row>
+        <div class="small-3">
+          <div class="form-actions">
+            <%= f.button :submit, class: "secondary small button" %>
+          </div>
         </div>
-      </div>
-      <div class="small-3">
-        <div class="button">
-          <%= link_to "Done", outing_path(:id => @outing.id), {:style => 'color:#FFFFFF;', :class => "css_class"} %>
+        <div class="small-3">
+          <div class="button">
+            <%= link_to "Finished Adding Observations", outing_path(:id => @outing.id), {:style => 'color:#FFFFFF;', :class => "secondary small button"} %>
+          </div>
         </div>
       </div>
     </div>
+  </div>
 <% end %>

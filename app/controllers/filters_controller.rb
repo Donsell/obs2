@@ -5,16 +5,16 @@ class FiltersController < ApplicationController
 
   def index
     @filters = Filter.all
-    respond_with(@filters)
+    redirect_to({controller: "equipment", id: "filters"})
   end
 
   def show
-    respond_with(@filter)
+    redirect_to({controller: "equipment", id: "filters"})
   end
 
   def new
     @filter = Filter.new
-    respond_with(@filter)
+    #redirect_to({controller: "equipment", id: "filters"})
   end
 
   def edit
@@ -23,17 +23,17 @@ class FiltersController < ApplicationController
   def create
     @filter = Filter.new(filter_params)
     flash[:notice] = 'Filter was successfully created.' if @filter.save
-    respond_with(@filter)
+    redirect_to({controller: "equipment", id: "filters"})
   end
 
   def update
     flash[:notice] = 'Filter was successfully updated.' if @filter.update(filter_params)
-    respond_with(@filter)
+    redirect_to({controller: "equipment", id: "filters"})
   end
 
   def destroy
     @filter.destroy
-    respond_with(@filter)
+    redirect_to({controller: "equipment", id: "filters"})
   end
 
   private

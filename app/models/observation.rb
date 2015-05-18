@@ -68,12 +68,27 @@ class Observation < ActiveRecord::Base
     end
 
   def check_program
-        prog_body = ProgramBody.where(body_id: self.body_id)
+     user = User.find(self.user_id)
+     obs = user.obs + 1
+     sites_obs = user.sites_obs
+     if sites_obs[self.outing.site.id.to_s]
+      sites_obs[self.outing.site_id.to_s] = sites_obs[self.outing.site_id.to_s] + 1
+     else 
+      sites_obs[self.outing.site_id.to_s] = 1
+     end
+      prog_body = ProgramBody.where(body_id: self.body_id)
       if prog_body.count > 0
+        prog_obs = user.prog_obs
         prog_body.each do |progbody|
           ProgramObservation.create(user_id: self.user_id, program_id: progbody.program_id,observation_id: self.id, body_id: self.body_id)
+          if prog_obs[progbody.program_id.to_s]
+            prog_obs[progbody.program_id.to_s] = prog_obs[progbody.program_id.to_s] + 1
+          else
+            prog_obs[progbody.program_id.to_s] = 1
+          end
         end
       end
-end
+      user.update(obs: obs, sites_obs: sites_obs)
+  end
 
  end
