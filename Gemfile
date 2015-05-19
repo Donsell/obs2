@@ -50,6 +50,13 @@ group :development do
   gem 'rb-fchange', :require=>false
   gem 'rb-fsevent', :require=>false
   gem 'rb-inotify', :require=>false
+  gem 'capistrano', '~> 3.1'
+  gem 'capistrano-rails'
+  gem 'capistrano-bundler'
+  gem 'capistrano-rbenv', '~> 2.0'
+#  gem 'unicorn'
+  gem 'capistrano-passenger'
+
 end
 group :development, :test do
   gem 'factory_girl_rails'
