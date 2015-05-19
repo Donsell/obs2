@@ -14,7 +14,7 @@ set :repo_url, 'https://github.com/Donsell/obs2.git'
 # Default value for :scm is :git
 set :scm, :git
 set :rbenv_type, :system
-set :rbenv_ruby, '2.2.2'
+set :rbenv_ruby, '2.0.0'
 set :rbenv_prefix, "RBENV_ROOT=#{fetch(:rbenv_path)} RBENV_VERSION=#{fetch(:rbenv_ruby)} #{fetch(:rbenv_path)}/bin/rbenv exec"
 set :rbenv_map_bins, %w{rake gem bundle ruby rails}
 
@@ -53,7 +53,7 @@ set :tests, []
 # see documentation in lib/capistrano/tasks/setup_config.cap
 # for details of operations
 namespace :deploy do
- 
+
   desc 'Restart application'
   task :restart do
     on roles(:app), in: :sequence, wait: 5 do
@@ -61,9 +61,9 @@ namespace :deploy do
       execute :touch, release_path.join('tmp/restart.txt')
     end
   end
- 
+
   after :publishing, :restart
- 
+
   after :restart, :clear_cache do
     on roles(:web), in: :groups, limit: 3, wait: 10 do
       # Here we can do anything such as:
@@ -72,5 +72,5 @@ namespace :deploy do
       # end
     end
   end
- 
+
 end
