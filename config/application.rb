@@ -1,7 +1,7 @@
 require File.expand_path('../boot', __FILE__)
 
 require 'rails/all'
-
+require 'rails/generators'
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
@@ -36,7 +36,6 @@ module Obs2
     # For Foundation 5
     config.assets.precompile += %w( vendor/modernizr )
 
-    config.middleware.use PDFKit::Middleware
 
   end
 end
