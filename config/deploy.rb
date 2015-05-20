@@ -11,6 +11,7 @@ set :repo_url, 'https://github.com/Donsell/obs2.git'
 # Default deploy_to directory is /var/www/my_app_name
 # set :deploy_to, '/var/www/my_app_name'
 
+#require 'bundler/capistrano'
 # Default value for :scm is :git
 set :scm, :git
 set :rbenv_type, :system
@@ -48,6 +49,7 @@ set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public
 # what specs should be run before deployment is allowed to
 # continue, see lib/capistrano/tasks/run_tests.cap
 set :tests, []
+
 
 # which config files should be copied by deploy:setup_config
 # see documentation in lib/capistrano/tasks/setup_config.cap

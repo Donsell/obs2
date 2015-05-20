@@ -31,8 +31,8 @@ gem 'simple_form'
 gem 'jquery-datatables-rails', github: 'rweng/jquery-datatables-rails'
 gem 'underscore-rails'
 gem 'will_paginate', '~> 3.0.6'
-gem 'pdfkit'
-gem 'wkhtmltopdf-binary'
+#gem 'pdfkit'
+#gem 'wkhtmltopdf-binary'
 gem 'chartkick'
 
 group :development do
@@ -49,7 +49,7 @@ group :development do
   gem 'rb-fchange', :require=>false
   gem 'rb-fsevent', :require=>false
   gem 'rb-inotify', :require=>false
-  gem 'capistrano', '~> 3.1'
+  gem 'capistrano', '~> 3.4.0'
   gem 'capistrano-rails'
   gem 'capistrano-bundler'
   gem 'capistrano-rbenv', '~> 2.0'
