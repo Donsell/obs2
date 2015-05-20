@@ -34,6 +34,7 @@ gem 'will_paginate', '~> 3.0.6'
 #gem 'pdfkit'
 #gem 'wkhtmltopdf-binary'
 gem 'chartkick'
+gem 'mysql2'
 
 group :development do
   gem 'better_errors'
@@ -69,6 +70,3 @@ group :test do
   gem 'selenium-webdriver'
 end
 
-group  :production do
-  gem 'mysql2'
-end
