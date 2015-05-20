@@ -16,7 +16,7 @@ gem 'spring', group: :development
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw]
 gem 'devise'
 gem 'devise_invitable'
-gem 'foundation-rails', '~> 5.5.0'
+gem 'foundation-rails'
 gem "compass-rails", github: "Compass/compass-rails", branch: "master"
 gem 'zurb-foundation','~> 4.0.0'
 #gem 'bootstrap-sass', '~> 2.3.2'
