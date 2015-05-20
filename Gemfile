@@ -18,7 +18,7 @@ gem 'devise'
 gem 'devise_invitable'
 gem 'foundation-rails'
 gem "compass-rails", github: "Compass/compass-rails", branch: "master"
-gem 'zurb-foundation','~> 4.0.0'
+#gem 'zurb-foundation','~> 4.0.0'
 #gem 'bootstrap-sass', '~> 2.3.2'
 gem 'simple_form'
 #gem 'cocoon'
