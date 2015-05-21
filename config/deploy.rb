@@ -19,7 +19,7 @@ set :rbenv_type, :system
 set :rbenv_ruby, '2.0.0-p481'
 set :rbenv_prefix, "RBENV_ROOT=#{fetch(:rbenv_path)} RBENV_VERSION=#{fetch(:rbenv_ruby)} #{fetch(:rbenv_path)}/bin/rbenv exec"
 set :rbenv_map_bins, %w{rake gem bundle ruby rails}
-set :passenger_restart_with_sudo => true
+set :passenger_restart_with_sudo, true
 
 # Default value for :format is :pretty
 # set :format, :pretty
