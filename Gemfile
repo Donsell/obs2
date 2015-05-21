@@ -3,6 +3,7 @@ ruby '2.0.0'
 gem 'rails', '4.1.9'
 gem 'sqlite3'
 gem 'sass-rails', '~> 5.0.1'
+gem 'mysql2'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.1.0'
 gem 'jquery-rails'
@@ -34,7 +35,8 @@ gem 'will_paginate', '~> 3.0.6'
 #gem 'pdfkit'
 #gem 'wkhtmltopdf-binary'
 gem 'chartkick'
-gem 'mysql2'
+#gem 'mysql2', :git => "git://github.com/brianmario/mysql2"
+
 
 group :development do
   gem 'better_errors'
