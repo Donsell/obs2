@@ -39,7 +39,7 @@ set :rbenv_map_bins, %w{rake gem bundle ruby rails}
 # set :default_env, { path: "/opt/ruby/bin:$PATH" }
 
 # Default value for keep_releases is 5
-set :keep_releases, 5
+set :keep_releases, 2
 
 # files we want symlinking to specific entries in shared.
 set :linked_files, %w{config/database.yml}
