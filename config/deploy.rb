@@ -4,6 +4,7 @@ lock '3.4.0'
 set :ssh_options, {
   keys: ["#{ENV['USERPROFILE']}/.ssh/capistrano_rsa"]
 }
+ssh_options[:forward_agent] = true
 
 
 set :application, 'obs2'
