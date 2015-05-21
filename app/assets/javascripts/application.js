@@ -23,7 +23,8 @@
 // require moment
 // require bootstrap-datetimepicker
 // require pickers
-//= require datatables/jquery.dataTables
+//= require jquery.dataTables
+// require datatables/jquery.dataTables
 //= require underscore
 // require gmaps/google
 //= require_tree .

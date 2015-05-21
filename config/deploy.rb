@@ -4,6 +4,7 @@ lock '3.4.0'
 set :application, 'obs2'
 set :deploy_user, 'dan'
 set :repo_url, 'https://github.com/Donsell/obs2.git'
+set :bundle_flags, ""
 
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
