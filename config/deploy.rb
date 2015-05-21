@@ -1,6 +1,11 @@
 # config valid only for current version of Capistrano
 lock '3.4.0'
 
+set :ssh_options, {
+  keys: ["#{ENV['USERPROFILE']}/.ssh/capistrano_rsa"]
+}
+
+
 set :application, 'obs2'
 set :deploy_user, 'dan'
 set :repo_url, 'https://github.com/Donsell/obs2.git'
