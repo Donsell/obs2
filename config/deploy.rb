@@ -2,7 +2,7 @@
 lock '3.4.0'
 
 set :ssh_options, {
-  keys: ["#{ENV['USERPROFILE']}/.ssh/capistrano_rsa"]
+  keys: ["#{ENV['USERPROFILE']}/.ssh/capistrano_rsa"],
   forward_agent: true
 }
 
