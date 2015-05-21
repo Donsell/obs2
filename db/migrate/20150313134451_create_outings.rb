@@ -6,8 +6,8 @@ class CreateOutings < ActiveRecord::Migration
       t.time :outing_time
       t.integer :site_id
       t.integer :seeing
-      t.integer :limiting_magnatude
-      t.integer :transparancy
+      t.integer :limiting_magnitude
+      t.integer :transparency
       t.text :description
 
       t.timestamps
