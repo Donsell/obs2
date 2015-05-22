@@ -2,11 +2,6 @@
 lock '3.4.0'
 
 
-#set :ssh_options, {
-#  keys: ["#{ENV['USERPROFILE']}/.ssh/delzell_ssh"]
-#}
-
-
 set :application, 'obs2'
 set :deploy_user, 'dan'
 set :repo_url, 'https://github.com/Donsell/obs2.git'
