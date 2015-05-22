@@ -13,6 +13,7 @@ class StatsController < ApplicationController
 
   def update
   	flash[:notice] = 'States was successfully updated.' if @stat.update(stat_update_params)
+  end
 
   private
   	def set_stat
