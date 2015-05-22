@@ -32,7 +32,7 @@ Catalog.delete_all
 
 open ("public/data/bodies.csv") do |bodies|
   bodies.read.each_line do |body|
-    object_id, alt_name, type, constellation, ra, dec, mag, sb, ur, sa2000, max, min, angle, class_id, numstars, bs, bchm, ngc = body.squeeze(" ").chomp.split(",")
+    nameid, alt_name, type, constellation, ra, dec, mag, sb, ur, sa2000, max, min, angle, class_id, numstars, bs, bchm, ngc = body.squeeze(" ").chomp.split(",")
     sec = (ra[6].to_i * 6).to_s
     ra.gsub!(/\s/ ,":")
     ra = "2000-01-01 " + ra.chop.chop + ":" + sec
@@ -121,7 +121,7 @@ open ("public/data/bodies.csv") do |bodies|
       :brightest_star_mag => bs,
       :ngc_description => ngc,
     )
-    body_array = object_id.split(';')
+    body_array = nameid.split(';')
     body_array.each do |entry|
       entry.squeeze!(" ")
       entry.sub!("V V", "VV")
