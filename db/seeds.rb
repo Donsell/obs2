@@ -134,7 +134,7 @@ open ("public/data/bodies.csv") do |bodies|
       Catalog.create!(
         :catalog => entry_array[0],
         :catalog_num => entry_array[1],
-        :body_id => body.body_id,
+        :body_id => body.id,
       )
     end
     body_array = alt_name.split(';')
@@ -151,7 +151,7 @@ open ("public/data/bodies.csv") do |bodies|
         Catalog.create!(
           :catalog => entry_array[0],
           :catalog_num => entry_array[1],
-          :body_id => body.body_id,
+          :body_id => body.id,
         )
       end
     end
@@ -162,13 +162,13 @@ end
 ProgramBody.delete_all
 bodies = Catalog.where(catalog: "M").order(:catalog_num)
 bodies.each do |body|
-  ProgramBody.create(:program_id => 1, :body_id => body.body_id, :name => body.catalog + ("000" + body.catalog_num).split(//).last(3).join)
+  ProgramBody.create(:program_id => 1, :body_id => body.id, :name => body.catalog + ("000" + body.catalog_num).split(//).last(3).join)
 end
 
 open ("public/data/Hearsch.csv") do |herschs|
   herschs.read.each_line do |hersch|
     body = Catalog.where(catalog: "NGC", catalog_num: hersch.chomp).limit(1)
-    ProgramBody.create(:program_id => 1, :body_id => body[0].body_id, :name => body[0].catalog + ("0000" + body[0].catalog_num).split(//).last(4).join)
+    ProgramBody.create(:program_id => 1, :body_id => body[0].id, :name => body[0].catalog + ("0000" + body[0].catalog_num).split(//).last(4).join)
   end
 end
 #=end
