@@ -134,7 +134,7 @@ open ("public/data/bodies.csv") do |bodies|
       Catalog.create!(
         :catalog => entry_array[0],
         :catalog_num => entry_array[1],
-        :name => name,
+        :body_id => body.body_id,
       )
     end
     body_array = alt_name.split(';')
@@ -151,7 +151,7 @@ open ("public/data/bodies.csv") do |bodies|
         Catalog.create!(
           :catalog => entry_array[0],
           :catalog_num => entry_array[1],
-          :name => name,
+          :body_id => body.body_id,
         )
       end
     end
