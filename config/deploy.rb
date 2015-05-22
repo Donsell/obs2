@@ -1,10 +1,10 @@
 # config valid only for current version of Capistrano
 lock '3.4.0'
 
-set :ssh_options, {
-  keys: ["#{ENV['USERPROFILE']}/.ssh/capistrano_rsa"],
-  forward_agent: true
-}
+
+#set :ssh_options, {
+#  keys: ["#{ENV['USERPROFILE']}/.ssh/delzell_ssh"]
+#}
 
 
 set :application, 'obs2'
