@@ -3,7 +3,7 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 $('#myTabs').bind 'click', (event, tab) ->
-  console.log tab
+  console.log tab;
  
 
 
@@ -13,4 +13,4 @@ $('#myTabs').bind 'click', (event, tab) ->
 
 
 $(document).ready ->
- $('table.display').dataTable() 
+ $('table.display').dataTable();

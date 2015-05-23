@@ -16,17 +16,16 @@
 // require jquery_ujs
 // require jquery_turbolinks
 // require jquery-ui.datepicker
-//= require turbolinks
-//= require foundation
 // require bootstrap
 // require cocoon
 // require moment
 // require bootstrap-datetimepicker
 // require pickers
-//= require jquery.dataTables
-// require datatables/jquery.dataTables
+// require jquery.dataTables
+//= require datatables/jquery.dataTables
 //= require underscore
-// require gmaps/google
+//= require foundation
+//= require turbolinks
 //= require_tree .
 
 
@@ -34,11 +33,11 @@ $(function() {
   $(document).foundation();
 });
 
-$(document).on("page:load ready", function(){
-    $("input.datepicker").datepicker({ dateFormat: 'yy-mm-dd' });
-});
+//$(document).on("page:load ready", function(){
+//    $("input.datepicker").datepicker({ dateFormat: 'yy-mm-dd' });
+//});
 
-$(function(){ $(document).foundation(); });
+//$(function(){ $(document).foundation(); });
 
 
 $('#myTabs').on('toggled', function (event, tab) {
