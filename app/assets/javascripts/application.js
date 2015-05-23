@@ -21,8 +21,8 @@
 // require moment
 // require bootstrap-datetimepicker
 // require pickers
-// require jquery.dataTables
-//= require datatables/jquery.dataTables
+//= require jquery.dataTables
+// require datatables/jquery.dataTables
 //= require underscore
 //= require foundation
 //= require turbolinks
