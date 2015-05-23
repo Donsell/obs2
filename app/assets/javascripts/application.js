@@ -25,7 +25,7 @@
 // require datatables/jquery.dataTables
 //= require underscore
 //= require foundation
-//= require turbolinks
+// require turbolinks
 //= require_tree .
 
 
