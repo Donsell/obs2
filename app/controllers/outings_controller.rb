@@ -5,7 +5,7 @@ class OutingsController < ApplicationController
   respond_to :html
 
   def index
-   @outings = Outing.where(user_id: current_user.id).order('outing_date DESC', 'outing_time DESC')
+   @outings = Outing.where(user_id: current_user.id).order('outing_date ASC')
  #   respond_with(@outings)
   end
 

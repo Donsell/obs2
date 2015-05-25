@@ -10,7 +10,7 @@ gem 'jquery-rails'
 #gem 'sshkit-sudo'
 # gem 'jquery_ujs'
 gem 'jquery-ui-rails', '~> 4.2.1'
-#gem 'jquery_turbolinks'
+gem 'jquery-turbolinks'
 gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0',          group: :doc

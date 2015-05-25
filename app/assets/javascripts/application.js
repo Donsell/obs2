@@ -11,9 +11,10 @@
 // about supported directives.
 //
 //= require jquery
+//= require jquery.turbolinks
 // require.jquery.ui
 // require jquery.ui.autocomplete
-// require jquery_ujs
+//= require jquery_ujs
 // require jquery_turbolinks
 // require jquery-ui.datepicker
 // require bootstrap
@@ -25,7 +26,7 @@
 // require datatables/jquery.dataTables
 //= require underscore
 //= require foundation
-// require turbolinks
+//= require turbolinks
 //= require_tree .
 
 
