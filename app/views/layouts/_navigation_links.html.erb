@@ -4,14 +4,14 @@
 <% else %>
 <% end %>
 <% if user_signed_in? %>
-	<li><%= link_to "Home", user_path(current_user).html_safe, class: "button" %></li>
-  <li><%= link_to "Edit account", edit_user_registration_path(@user), class: "button" %></li>
-  <li><%= link_to "Sign out", destroy_user_session_path, method: :delete, class: "button" %></li>
-  <li><%= link_to "Sites and Equipment",  "/equipment", class: "button" %></li>
-  <li><%= link_to "Outings",  outings_path, class: "button"  %></li>
-  <li><%= link_to "Programs", programs_path, class: "button" %></li>
+	<li><%= link_to "Home", user_path(current_user).html_safe, class: "secondary small button" %></li>
+  <li><%= link_to "Edit account", edit_user_registration_path(@user), class: "secondary small button" %></li>
+  <li><%= link_to "Sign out", destroy_user_session_path, method: :delete, class: "secondary small button" %></li>
+  <li><%= link_to "Sites and Equipment",  "/equipment", class: "secondary small button" %></li>
+  <li><%= link_to "Outings",  outings_path, class: "secondary small button"  %></li>
+  <li><%= link_to "Programs", programs_path, class: "secondary small button" %></li>
 <% else %>
-  <li><%= link_to "Home", root_path, class: "button" %></li>
-  <li><%= link_to "Sign in", new_user_session_path, class: "button" %></li>
-  <li><%= link_to "Sign up", new_user_registration_path, class: "button" %></li>
+  <li><%= link_to "Home", root_path, class: "secondary small button" %></li>
+  <li><%= link_to "Sign in", new_user_session_path, class: "secondary small button" %></li>
+  <li><%= link_to "Sign up", new_user_registration_path, class: "secondary small button" %></li>
 <% end %>

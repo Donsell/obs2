@@ -24,12 +24,12 @@
               <h3>Astronomy Log</h3>
               <hr>
               <div class="row">
-                <div class="large-8 columns large-centered">
+                <div class="large-12 columns large-centered">
                   <% if !user_signed_in? %>
                       <ul class="button-group even-3">
                   <% else %>
                       <ul class="button-group even-6">
-                    <% end %>
+                  <% end %>
                     <%= render 'layouts/navigation_links' %>
                   </ul>
                 </div>

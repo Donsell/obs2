@@ -9,27 +9,29 @@
 #puts 'CREATED ADMIN USER: ' << user.email
 
 #=begin
-Constellation.delete_all
+#Constellation.delete_all
+#ActiveRecord::Base.connection.execute("TRUNCATE TABLE  constellations")
 open ("public/data/constellations.csv") do |constellations|
   constellations.read.each_line do |constellation|
     abbr, name, genitive = constellation.chomp.split(",")
-    Constellation.create!(:abbr => abbr.humanize, :constellation => name.humanize, :genitive => genitive.humanize)
+    Constellation.find_or_create_by(:abbr => abbr.humanize, :constellation => name.humanize, :genitive => genitive.humanize)
   end
 end
 
-
-BodyType.delete_all
+##BodyType.delete_all
+##ActiveRecord::Base.connection.execute("TRUNCATE TABLE  body_types")
 open ("public/data/object_types.txt") do |types|
   types.read.each_line do |type|
     abbr, name = type.chomp.split(",")
-    BodyType.create!(:abbr => abbr, :description => name)
+    BodyType.find_or_create_by(:abbr => abbr, :description => name)
   end
 end
 #=end
 #=begin
-Body.delete_all
-Catalog.delete_all
-
+##Body.delete_all
+##Catalog.delete_all
+##ActiveRecord::Base.connection.execute("TRUNCATE TABLE  bodies")
+##ActiveRecord::Base.connection.execute("TRUNCATE TABLE  catalogs")
 open ("public/data/bodies.csv") do |bodies|
   bodies.read.each_line do |body|
     nameid, alt_name, type, constellation, ra, dec, mag, sb, ur, sa2000, max, min, angle, class_id, numstars, bs, bchm, ngc = body.squeeze(" ").chomp.split(",")
@@ -101,7 +103,7 @@ open ("public/data/bodies.csv") do |bodies|
     else
       psa_page = base_page
     end
-     body = Body.create!(
+     body = Body.find_or_create_by(
       :name => nameid,
       :alt_name => alt_name,
       :body_type_id => btype.first.id,
@@ -131,7 +133,7 @@ open ("public/data/bodies.csv") do |bodies|
       entry.sub!(". ", ".")
       entry.sub!("Sh2-", "Sh2 ")
       entry_array = entry.split
-      Catalog.create!(
+      Catalog.find_or_create_by(
         :catalog => entry_array[0],
         :catalog_num => entry_array[1],
         :body_id => body.id,
@@ -148,7 +150,7 @@ open ("public/data/bodies.csv") do |bodies|
       entry.sub!("Sh2-", "Sh2 ")
       entry_array = entry.split
       if entry_array.length > 1
-        Catalog.create!(
+        Catalog.find_or_create_by(
           :catalog => entry_array[0],
           :catalog_num => entry_array[1],
           :body_id => body.id,
@@ -159,16 +161,17 @@ open ("public/data/bodies.csv") do |bodies|
 end
 
 # Load Programs
-ProgramBody.delete_all
+#ProgramBody.delete_all
+#ActiveRecord::Base.connection.execute("TRUNCATE TABLE  program_bodies")
 bodies = Catalog.where(catalog: "M").order(:catalog_num)
 bodies.each do |body|
-  ProgramBody.create(:program_id => 1, :body_id => body.id, :name => body.catalog + ("000" + body.catalog_num).split(//).last(3).join)
+  ProgramBody.find_or_create_by(:program_id => 1, :body_id => body.id, :name => body.catalog + ("000" + body.catalog_num).split(//).last(3).join)
 end
 
 open ("public/data/Hearsch.csv") do |herschs|
   herschs.read.each_line do |hersch|
     body = Catalog.where(catalog: "NGC", catalog_num: hersch.chomp).limit(1)
-    ProgramBody.create(:program_id => 1, :body_id => body[0].id, :name => body[0].catalog + ("0000" + body[0].catalog_num).split(//).last(4).join)
+    ProgramBody.find_or_create_by(:program_id => 2, :body_id => body[0].id, :name => body[0].catalog + ("0000" + body[0].catalog_num).split(//).last(4).join)
   end
 end
 #=end

@@ -100,6 +100,7 @@
         border-radius: 5px;
         padding: 15px 50px 15px 50px;
         margin: 0;
+        text-align: center;
     }
 
     .tabular.small.button {
@@ -113,11 +114,11 @@
 
     .tabular.small.button:hover {
     	color: white;
-    	background-color: rgba(0,0,0,0.5);
+    	background-color: rgba(0,0,0,.5);
     }
 
     .secondary.small.button:hover {
-        background-color: rgba(255, 255, 255, 0.1);
+        background-color: rgba(255, 255, 255, 0.2);
     }
 
     .row .main-wrapper {
@@ -137,15 +138,15 @@
 
     .button {
         -webkit-appearance: none;
-         background-color: transparent;
+        background-color: transparent;
         border-width: 0;
         text-align: center;
         box-shadow: 0 0 0;
     }
 
     .button:hover {
-        color: rgba(255, 255, 255, 0.7);
-        background-color: transparent;
+        color: black;
+        background-color: white;
     }
 
     footer p,
@@ -167,7 +168,7 @@
         padding-bottom: 10px;
         padding-left: 10px;
         padding-right: 10px;
-        background-color: LightSlateGrey;
+        background-color: slategrey;
         margin-left: auto;
         margin-right: auto;
     }
