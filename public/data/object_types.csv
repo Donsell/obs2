@@ -1,0 +1,25 @@
+1,ASTER,Asterism
+2,BRTNB,Bright Nebula
+3,CL+NB,Cluster with Nebulosity
+4,DRKNB,Dark Nebula
+5,GALCL,Galaxy cluster
+6,GALXY,Galaxy
+7,GLOCL,Globular Cluster
+8,GX+DN,Diffuse Nebula in a Galaxy
+9,GX+GC,Globular Cluster in a Galaxy
+10,G+C+N,Cluster with Nebulosity in a Galaxy
+11,LMCCN,Cluster with Nebulosity in the LMC
+12,LMCDN,Diffuse Nebula in the LMC
+13,LMCGC,Globular Cluster in the LMC
+14,LMCOC,Open cluster in the LMC
+15,NONEX,Nonexistent
+16,OPNCL,Open Cluster
+17,PLNNB,Planetary Nebula
+18,SMCCN,Cluster with Nebulosity in the SMC
+19,SMCDN,Diffuse Nebula in the SMC
+20,SMCGC,Globular Cluster in the SMC
+21,SMCOC,Open cluster in the SMC
+22,SNREM,Supernova Remnant
+23,QUASR,Quasar
+24,#STAR,# of Stars
+25,DBLSTAR,Double Star

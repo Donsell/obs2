@@ -1,88 +1,88 @@
-And,Andromeda,Andromedae
-Ant,Antlia,Antliae
-Aps,Apus,Apodis
-Aqr,Aquarius,Aquarii
-Aql,Aquila,Aquilae
-Ara,Ara,Arae
-Ari,Aries,Arietis
-Aur,Auriga,Aurigae
-Boo,Bootes,Bootis
-Cae,Caelum,Caeli
-Cam,Camelopardalis,Camelopardalis
-Cnc,Cancer,Cancri
-CVn,Canes Venatici,Canum Venaticorum
-CMa,Canis Major,Canis Majoris
-CMi,Canis Minor,Canis Minoris
-Cap,Capricornus,Capricorni
-Car,Carina,Carinae
-Cas,Cassiopeia,Cassiopeiae
-Cen,Centaurus,Centauri
-Cep,Cepheus,Cephei
-Cet,Cetus,Ceti
-Cha,Chamaeleon,Chamaeleontis
-Cir,Circinus,Circini
-Col,Columba,Columbae
-Com,Coma Berenices,Comae Berenices
-CrA,Corona Australis,Coronae Australis
-CrB,Corona Borealis,Coronae Borealis
-Crv,Corvus,Corvi
-Crt,Crater,Crateris
-Cru,Crux,Crucis
-Cyg,Cygnus,Cygni
-Del,Delphinus,Delphini
-Dor,Dorado,Doradus
-Dra,Draco,Draconis
-Equ,Equuleus,Equulei
-Eri,Eridanus,Eridani
-For,Fornax,Fornacis
-Gem,Gemini,Geminorum
-Gru,Grus,Gruis
-Her,Hercules,Herculis
-Hor,Horologium,Horologii
-Hya,Hydra,Hydrae
-Hyi,Hydrus,Hydri
-Ind,Indus,Indi
-Lac,Lacerta,Lacertae
-Leo,Leo,Leonis
-LMi,Leo Minor,Leonis Minoris
-Lep,Lepus,Leporis
-Lib,Libra,Librae
-Lup,Lupus,Lupi
-Lyn,Lynx,Lyncis
-Lyr,Lyra,Lyrae
-Men,Mensa,Mensae
-Mic,Microscopium,Microscopii
-Mon,Monoceros,Monocerotis
-Mus,Musca,Muscae
-Nor,Norma,Normae
-Oct,Octans,Octantis
-Oph,Ophiuchus,Ophiuchi
-Ori,Orion,Orionis
-Pav,Pavo,Pavonis
-Peg,Pegasus,Pegasi
-Per,Perseus,Persei
-Phe,Phoenix,Phoenicis
-Pic,Pictor,Pictoris
-Psc,Pisces,Piscium
-PsA,Piscis Austrinus,Piscis Austrini
-Pup,Puppis,Puppis
-Pyx,Pyxis,Pyxidis
-Ret,Reticulum,Reticuli
-Sge,Sagitta,Sagittae
-Sgr,Sagittarius,Sagittarii
-Sco,Scorpius,Scorpii
-Scl,Sculptor,Sculptoris
-Sct,Scutum,Scuti
-Ser,Serpens,Serpentis
-Sex,Sextans,Sextantis
-Tau,Taurus,Tauri
-Tel,Telescopium,Telescopii
-Tri,Triangulum,Trianguli
-TrA,Triangulum Australe,Trianguli Australis
-Tuc,Tucana,Tucanae
-UMa,Ursa Major,Ursae Majoris
-UMi,Ursa Minor,Ursae Minoris
-Vel,Vela,Velorum
-Vir,Virgo,Virginis
-Vol,Volans,Volantis
-Vul,Vulpecula,Vulpeculae
+1,And,Andromeda,Andromedae
+2,Ant,Antlia,Antliae
+3,Aps,Apus,Apodis
+4,Aqr,Aquarius,Aquarii
+5,Aql,Aquila,Aquilae
+6,Ara,Ara,Arae
+7,Ari,Aries,Arietis
+8,Aur,Auriga,Aurigae
+9,Boo,Bootes,Bootis
+10,Cae,Caelum,Caeli
+11,Cam,Camelopardalis,Camelopardalis
+12,Cnc,Cancer,Cancri
+13,CVn,Canes Venatici,Canum Venaticorum
+14,CMa,Canis Major,Canis Majoris
+15,CMi,Canis Minor,Canis Minoris
+16,Cap,Capricornus,Capricorni
+17,Car,Carina,Carinae
+18,Cas,Cassiopeia,Cassiopeiae
+19,Cen,Centaurus,Centauri
+20,Cep,Cepheus,Cephei
+21,Cet,Cetus,Ceti
+22,Cha,Chamaeleon,Chamaeleontis
+23,Cir,Circinus,Circini
+24,Col,Columba,Columbae
+25,Com,Coma Berenices,Comae Berenices
+26,CrA,Corona Australis,Coronae Australis
+27,CrB,Corona Borealis,Coronae Borealis
+28,Crv,Corvus,Corvi
+29,Crt,Crater,Crateris
+30,Cru,Crux,Crucis
+31,Cyg,Cygnus,Cygni
+32,Del,Delphinus,Delphini
+33,Dor,Dorado,Doradus
+34,Dra,Draco,Draconis
+35,Equ,Equuleus,Equulei
+36,Eri,Eridanus,Eridani
+37,For,Fornax,Fornacis
+38,Gem,Gemini,Geminorum
+39,Gru,Grus,Gruis
+40,Her,Hercules,Herculis
+41,Hor,Horologium,Horologii
+42,Hya,Hydra,Hydrae
+43,Hyi,Hydrus,Hydri
+44,Ind,Indus,Indi
+45,Lac,Lacerta,Lacertae
+46,Leo,Leo,Leonis
+47,LMi,Leo Minor,Leonis Minoris
+48,Lep,Lepus,Leporis
+49,Lib,Libra,Librae
+50,Lup,Lupus,Lupi
+51,Lyn,Lynx,Lyncis
+52,Lyr,Lyra,Lyrae
+53,Men,Mensa,Mensae
+54,Mic,Microscopium,Microscopii
+55,Mon,Monoceros,Monocerotis
+56,Mus,Musca,Muscae
+57,Nor,Norma,Normae
+58,Oct,Octans,Octantis
+59,Oph,Ophiuchus,Ophiuchi
+60,Ori,Orion,Orionis
+61,Pav,Pavo,Pavonis
+62,Peg,Pegasus,Pegasi
+63,Per,Perseus,Persei
+64,Phe,Phoenix,Phoenicis
+65,Pic,Pictor,Pictoris
+66,Psc,Pisces,Piscium
+67,PsA,Piscis Austrinus,Piscis Austrini
+68,Pup,Puppis,Puppis
+69,Pyx,Pyxis,Pyxidis
+70,Ret,Reticulum,Reticuli
+71,Sge,Sagitta,Sagittae
+72,Sgr,Sagittarius,Sagittarii
+73,Sco,Scorpius,Scorpii
+74,Scl,Sculptor,Sculptoris
+75,Sct,Scutum,Scuti
+76,Ser,Serpens,Serpentis
+77,Sex,Sextans,Sextantis
+78,Tau,Taurus,Tauri
+79,Tel,Telescopium,Telescopii
+80,Tri,Triangulum,Trianguli
+81,TrA,Triangulum Australe,Trianguli Australis
+82,Tuc,Tucana,Tucanae
+83,UMa,Ursa Major,Ursae Majoris
+84,UMi,Ursa Minor,Ursae Minoris
+85,Vel,Vela,Velorum
+86,Vir,Virgo,Virginis
+87,Vol,Volans,Volantis
+88,Vul,Vulpecula,Vulpeculae

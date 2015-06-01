@@ -52,6 +52,7 @@
  server 'delzell.net',
    user: 'dan',
    roles: %w{web app db}
+
 #   ssh_options: {
 #     user: 'user_name', # overrides user setting above
 #     keys: %w(/home/user_name/.ssh/id_rsa),
