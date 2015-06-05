@@ -9,7 +9,7 @@ class Observation < ActiveRecord::Base
       has_many :program_observations
       before_validation :set_body_id
       after_save :check_program
-      validates :body_id, :presence  => true
+      #validates :body_id, :presence => { :message => "This object isn't recognized" }
 
 
 
@@ -37,12 +37,16 @@ class Observation < ActiveRecord::Base
       def magnification
         (self.telescope.focal_length / self.eyepiece.focal_length).to_s
       end
+
      def set_body_id
-        if bd = Catalog.find_by_catalog_and_catalog_num(self.catalog_name, self.catalog_num)
-          self.body_id = bd.body_id
-          self.catalog_id = bd.id
-        end
-     end
+      bd = Catalog.find_by_catalog_and_catalog_num(self.catalog_name, self.catalog_num.upcase)
+      if bd
+        self.body_id = bd.body_id
+        self.catalog_id = bd.id
+      else
+        errors.add("#{self.catalog_name +  ' ' + self.catalog_num}",  " isn't a recognized object.")
+      end
+   end
 
     def time_text
       obs_time.try(:strftime, "%H:%M")
@@ -73,7 +77,7 @@ class Observation < ActiveRecord::Base
      sites_obs = user.sites_obs
      if sites_obs[self.outing.site.id.to_s]
       sites_obs[self.outing.site_id.to_s] = sites_obs[self.outing.site_id.to_s] + 1
-     else 
+     else
       sites_obs[self.outing.site_id.to_s] = 1
      end
       prog_body = ProgramBody.where(body_id: self.body_id)

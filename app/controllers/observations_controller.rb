@@ -23,8 +23,8 @@ class ObservationsController < ApplicationController
     @observation.obs_time = @outing.outing_time
     @observation.transparency = @outing.transparency
     @observation.seeing = @outing.seeing
+    @observation.catalog_name = "NGC"
     @catalogs = Catalog.order(:catalog).select(:catalog).uniq.map(&:catalog)
-
     #@observation.telescope_id = @outing.telescope_id
   end
 
@@ -32,6 +32,7 @@ class ObservationsController < ApplicationController
 
   # GET /observations/1/edit
   def edit
+    @catalogs = Catalog.order(:catalog).select(:catalog).uniq.map(&:catalog)
     @outing = Outing.find(params[:outing_id])
   end
 
@@ -46,7 +47,9 @@ class ObservationsController < ApplicationController
         format.html { redirect_to new_outing_observation_path(:outing_id => observation_params[:outing_id]), notice: 'Observation was successfully created.' }
         format.json { render :show, status: :created, location: @observation }
       else
-        format.html { render :new }
+        @outing = Observation.find(observation_params[:outing_id])
+        @catalogs = Catalog.order(:catalog).select(:catalog).uniq.map(&:catalog)
+        format.html { render action: "new", message: "That object isn't recognized."}
         format.json { render json: @observation.errors, status: :unprocessable_entity }
       end
     end
@@ -55,11 +58,13 @@ class ObservationsController < ApplicationController
   # PATCH/PUT /observations/1
   # PATCH/PUT /observations/1.json
   def update
-    respond_to do |format|
+    respond_to do |format|    
       if @observation.update(observation_params)
         format.html { redirect_to outing_path(:id => observation_params[:outing_id]), notice: 'Observation was successfully updated.' }
         format.json { render :show, status: :ok, location: @observation }
-      else
+      else 
+        @catalogs = Catalog.order(:catalog).select(:catalog).uniq.map(&:catalog)
+        @outing = Observation.find(observation_params[:outing_id])
         format.html { render :edit }
         format.json { render json: @observation.errors, status: :unprocessable_entity }
       end
@@ -85,6 +90,6 @@ class ObservationsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def observation_params
-      params.require(:observation).permit(:user_id, :outing_id, :catalog_name, :catalog_num, :body_id, :obs_date, :obs_time, :seeing, :transparency, :telescope_id, :eyepiece_id, :filter_id, :note, :time_text, :date_text)
+      params.require(:observation).permit(:user_id, :outing_id, :catalog_name, :catalog_num, :body_id, :obs_date, :obs_time, :seeing, :transparency, :telescope_id, :eyepiece_id, :filter_id, :note, :time_text, :date_text, :catalog_id)
     end
 end

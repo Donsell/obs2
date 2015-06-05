@@ -12,7 +12,7 @@
   </div>
   <div class="small-7 columns">
     <%= f.label :location_id %>
-    <%= f.collection_select  :site_id, Site.where(user_id: :user_id), :id, :name %>
+    <%= f.collection_select  :site_id, Site.where(user_id:  current_user.id), :id, :name %>
   </div>
 </div>
 <div class="row">
