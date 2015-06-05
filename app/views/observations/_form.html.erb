@@ -1,22 +1,31 @@
 <%= simple_form_for(@observation) do |f| %>
   <%= f.error_notification %>
+  <% if @observation.errors.any? %>
+  <div id="error_explanation">
+    <ul>
+      <% @observation.errors.full_messages.each do |msg| %>
+        <li><%= msg.humanize %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
 
   <div class="form-inputs">
-      <%= f.input :user_id, :as => :hidden, :input_html => {:value => current_user.id } %>
+    <%= f.input :user_id, :as => :hidden, :input_html => {:value => current_user.id } %>
     <%= f.input :outing_id, :as => :hidden %>
     <div class="row">
       <div class="small-2 columns">
-        <%= f.input :catalog_name, collection: @catalogs, :selected => "NGC", :autofocus => true %>
+        <%= f.input :catalog_name, collection: @catalogs, :autofocus => true %>
       </div>
       <div class="small-2 columns">
         <%= f.label "Catalog Number" %>
         <%= f.text_field :catalog_num, input_html: {style: 'height:10px;'} %>
       </div>
       <div class="small-3 columns">
-        <%= f.input :obs_date, as: :date, html5: true, label: "Date" %>
+         <%= f.input :obs_date, as: :date, html5: true, :label => "Date"  %>
       </div>
       <div class="small-2 columns">
-        <%= f.input :time_text, :label => "Time" %>
+        <%= f.input :time_text, label: "Time" %>
       </div>
       <div class="small-3 colmns">
         &nbsp
@@ -34,36 +43,28 @@
       </div>
     </div>
     <div class="row">
-    <div class="small-3 columns">
-      <%= f.label :telescope_id %>
-      <%= f.collection_select :telescope_id , Telescope.where(:user_id => current_user.id), :id, :telescope_name %>
-    </div>
-    <div class="small-3 columns">
-      <%= f.label :eyepiece_id %>
-      <%= f.collection_select :eyepiece_id, Eyepiece.where(:user_id => current_user.id), :id, :eyepiece_name %>
-    </div>
-    <div class="small-3 columns">
-      <%= f.label :filter_id %>
-      <%= f.collection_select :filter_id, Filter.where(:user_id  => current_user.id), :id, :filter_name, :include_blank => true %>
-    </div>
-    <div class="small-3 colmns">
-       &nbsp
-    </div>
-    <div class="small-12 columns">
-      <%= f.input :note %>
-    </div>
-      <div class=row>
-        <div class="small-3">
-          <div class="form-actions">
-            <%= f.button :submit, class: "secondary small button" %>
-          </div>
-        </div>
-        <div class="small-3">
-          <div class="button">
-            <%= link_to "Finished Adding Observations", outing_path(:id => @outing.id), {:style => 'color:#FFFFFF;', :class => "secondary small button"} %>
-          </div>
-        </div>
+      <div class="small-3 columns">
+        <%= f.label :telescope_id %>
+        <%= f.collection_select :telescope_id , Telescope.where(:user_id => current_user.id), :id, :telescope_name %>
+      </div>
+      <div class="small-3 columns">
+        <%= f.label :eyepiece_id %>
+        <%= f.collection_select :eyepiece_id, Eyepiece.where(:user_id => current_user.id), :id, :eyepiece_name %>
+      </div>
+      <div class="small-3 columns">
+        <%= f.label :filter_id %>
+        <%= f.collection_select :filter_id, Filter.where(:user_id  => current_user.id), :id, :filter_name, :include_blank => true %>
+      </div>
+      <div class="small-3 colmns">
+         &nbsp
       </div>
     </div>
-  </div>
+    <div class="row">
+        <div class="small-12 columns">
+          <%= f.input :note %>
+        </div>
+    </div>
+    <%= f.button :submit, class: "secondary small button" %>
+    <%= link_to "Finished Adding Observations",  outing_path(@outing.id), class: "secondary small button" %>
+ </div>
 <% end %>
