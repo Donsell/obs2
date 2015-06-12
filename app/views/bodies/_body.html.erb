@@ -1,4 +1,4 @@
-  
+
     <h2><%= body.name.rstrip %>-<%= body.proper_name %></h2>
     <% if body.alt_name? %>
       <h3><%= "#{'Also known as:' + ' ' + body.alt_name}" %></h3>
@@ -15,20 +15,20 @@
         <dt>Declination:</dt>
         <dd><%= "#{format_declination(body.declination)}" %></dd>
         <% if body.magnitude < 99.9 %>
-          <dt>Apparent Magnitude:</dt>
+          <dt><%= body.body_type_id == 25 ?  "#{'Primary '}" : "#{'Apparent '}"%>Magnitude:</dt>
           <dd><%= "#{body.magnitude.to_s}" %></dd>
         <% end %>
+        <% if body.surface_brightness != 99.9 %>
+          <dt><%= body.body_type_id==25 ? "#{'Secondary Magnitude:'}" : "#{'Surface Brightness:'}" %></dt>
+          <dd><%= "#{body.surface_brightness.to_s}" %></dd>
+        <% end %>
         <% if body.size_max.present? %>
-          <dt>Size:</dt>
+          <dt><%= body.body_type_id==25 ? "#{'Separation:'}"  : "#{'Size:'}" %></dt>
           <dd><%= "#{format_size(body.size_max)}" %>
             <% if body.size_min.present? %>
               <%= "#{ ' x ' + format_size(body.size_min)}" %>
             <% end %>
             </dd>
-        <% end %>
-        <% if body.surface_brightness != 99.9 %>
-          <dt>Surface Brightnes:</dt>
-          <dd><%= "#{body.surface_brightness.to_s}" %></dd>
         <% end %>
         <% if body.position_angle? %>
             <dt>Postition Angle: </dt>
@@ -49,8 +49,8 @@
       <div class="atlas">
         <ul>
           <li><%= "#{'Uranometria Page ' + body.uranometria.to_s}" %></li>
-        <li><%= "#{ 'Sky Atlas 2000 Chart ' + body.sky_atlas_2000.to_s}" %></li>
-        <li><%=  "#{'Pocket Sky Atlas Page ' + body.pocket_sky_atlas.to_s}" %></li>
+          <li><%= "#{ 'Sky Atlas 2000 Chart ' + body.sky_atlas_2000.to_s}" %></li>
+          <li><%=  "#{'Pocket Sky Atlas Page ' + body.pocket_sky_atlas.to_s}" %></li>
         </ul>
     </div>
       <% if body.programs.count > 0 %>
@@ -58,6 +58,6 @@
           <%= "#{ body.name.rstrip + ' is in the ' + program.name + ' observing program.'}" %><br>
         <% end %>
       <% end %>
-      <%= "#{'NGC Description: ' + body.ngc_description}" %>
+      <%= "#{(body.body_type.id == 25 ? 'Saguaro ' : 'NGC ') +  'Description: ' + body.ngc_description}" unless body.ngc_description.nil? %>
     </div>
     <hr>

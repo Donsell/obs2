@@ -1,4 +1,12 @@
 class Site < ActiveRecord::Base
   has_many :outings
-  belongs_to :location_type
+
+  LOCATION_TYPES=
+  {
+    1 => "Urban",
+    2 => "Suburban",
+    3 => "Rural",
+    4 => "Dark Sky"
+  }
+
 end

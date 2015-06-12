@@ -4,7 +4,7 @@
       <th>Date</th>
       <th>Time</th>
       <th>Object</th>
-      <th>AKA</th>
+      <th>Also Known As</th>
       <th>Description</th>
       <th>&nbsp</th>
       <th>&nbsp</th>
@@ -22,10 +22,10 @@
           <% else %>
             <th>&nbsp</th>
           <% end -%>
-          <th><%= obs.body.proper_name %></th>
+          <th><%= obs.body.proper_name.titleize %></th>
           <th><%= link_to'Details', observation_path(:id => obs.id), class: "tabular small button" %></th>
           <th><%= link_to 'Edit', edit_outing_observation_path(obs.outing, obs), class: "tabular small button" %></th>
-          <th><%= link_to 'Destroy', obs, method: :delete, data: { confirm: 'Are you sure?'}, class: "tabular small button" %></th>
+          <th><%= link_to 'Delete', obs, method: :delete, data: { confirm: 'Are you sure?'}, class: "tabular small button" %></th>
       </tr>
     <% end %>
   </tbody>

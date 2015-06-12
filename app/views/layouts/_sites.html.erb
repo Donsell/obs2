@@ -13,7 +13,7 @@
       <% @user.sites.each do |site| %>
         <tr>
           <td><%= site.name %></td>
-          <td><%= site.location_type.name %>
+          <td><%=  Site::LOCATION_TYPES[site.location_type_id] %>
           <td><%= site.latitude %></td>
           <td><%= site.longitude %></td>
           <td><%= site.description %></td>

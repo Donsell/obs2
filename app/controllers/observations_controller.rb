@@ -47,7 +47,7 @@ class ObservationsController < ApplicationController
         format.html { redirect_to new_outing_observation_path(:outing_id => observation_params[:outing_id]), notice: 'Observation was successfully created.' }
         format.json { render :show, status: :created, location: @observation }
       else
-        @outing = Observation.find(observation_params[:outing_id])
+        @outing = Outing.find(observation_params[:outing_id])
         @catalogs = Catalog.order(:catalog).select(:catalog).uniq.map(&:catalog)
         format.html { render action: "new", message: "That object isn't recognized."}
         format.json { render json: @observation.errors, status: :unprocessable_entity }
@@ -58,13 +58,13 @@ class ObservationsController < ApplicationController
   # PATCH/PUT /observations/1
   # PATCH/PUT /observations/1.json
   def update
-    respond_to do |format|    
+    respond_to do |format|
       if @observation.update(observation_params)
         format.html { redirect_to outing_path(:id => observation_params[:outing_id]), notice: 'Observation was successfully updated.' }
         format.json { render :show, status: :ok, location: @observation }
-      else 
+      else
         @catalogs = Catalog.order(:catalog).select(:catalog).uniq.map(&:catalog)
-        @outing = Observation.find(observation_params[:outing_id])
+        @outing = Outing.find(observation_params[:outing_id])
         format.html { render :edit }
         format.json { render json: @observation.errors, status: :unprocessable_entity }
       end

@@ -55,7 +55,6 @@ ActiveRecord::Schema.define(version: 20150518001710) do
   end
 
   add_index "bodies", ["constellation_id"], name: "index_bodies_on_constellation_id"
-  add_index "bodies", ["name"], name: "index_bodies_on_name"
 
   create_table "body_types", force: true do |t|
     t.text     "abbr"

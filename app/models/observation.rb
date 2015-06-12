@@ -39,12 +39,19 @@ class Observation < ActiveRecord::Base
       end
 
      def set_body_id
-      bd = Catalog.find_by_catalog_and_catalog_num(self.catalog_name, self.catalog_num.upcase)
+      if self.catalog_num == ''
+        self.catalog_num =  nil
+        message = "(no catalog number specified)"
+      else
+        message = self.catalog_num
+        self.catalog_num.upcase!
+      end
+      bd = Catalog.find_by_catalog_and_catalog_num(self.catalog_name, self.catalog_num)
       if bd
         self.body_id = bd.body_id
         self.catalog_id = bd.id
       else
-        errors.add("#{self.catalog_name +  ' ' + self.catalog_num}",  " isn't a recognized object.")
+        errors.add("#{self.catalog_name +  ' ' + message}",  " isn't a recognized object.")
       end
    end
 

@@ -71,11 +71,37 @@ def psa(ra, dec)
   end
 end
 
+def load_body(nameid, id, name_pos)
+  body_array = nameid.split(';')
+  body_array.each do |entry|
+    entry.squeeze!(" ")
+    entry.sub!("V V", "VV")
+    entry.sub!("- ", "-")
+    entry.sub!("- ", "-")
+    entry.sub!(". ", ".")
+    entry.sub!(". ", ".")
+    entry.sub!("Sh2-", "Sh2 ")
+    entry_array = entry.split
+    if name_pos == 0
+      cat_name = entry_array[0]
+      cat_num = entry_array[1]
+    else
+      cat_name = entry_array[1]
+      cat_num = entry_array[0]
+    end
+    Catalog.find_or_create_by(
+      :catalog => cat_name,
+      :catalog_num => cat_num,
+      :body_id => id,
+    )
+  end
+end
+
 Body.where("id > ?", 20000).destroy_all
 #ActiveRecord::Base.connection.execute("TRUNCATE TABLE  constellations")
-open ("public/data/doubles.csv") do |bodies|
+open ("public/data/doubles2.csv") do |bodies|
   bodies.read.each_line do |body|
-    body_id,finder, nameid, designation, alt_name, type,  ra, dec, constellation, comp, mag1, mag2, sep, angle, ur, sa2000, spec, year, ads, ngc = body.squeeze(" ").chomp.split(",")
+    body_id,nameid, alt_name, catpos, ra, dec, constellation, comp, mag1, mag2, sep, angle, ur, sa2000, spec, year, ads, ngc = body.squeeze(" ").chomp.split(",")
     sec = (ra[6].to_i * 6).to_s
     ra.gsub!(/\s/ ,":")
     ra = "2000-01-01 " + ra.chop.chop + ":" + sec
@@ -108,29 +134,21 @@ open ("public/data/doubles.csv") do |bodies|
       :brightest_star_mag => 0,
       :ngc_description => ngc,
     )
-    body_array = nameid.split(';')
-    body_array.each do |entry|
-      entry.squeeze!(" ")
-      entry.sub!("V V", "VV")
-      entry.sub!("- ", "-")
-      entry.sub!("- ", "-")
-      entry.sub!(". ", ".")
-      entry.sub!(". ", ".")
-      entry.sub!("Sh2-", "Sh2 ")
-      entry_array = entry.split
-      Catalog.find_or_create_by(
-        :catalog => entry_array[1],
-        :catalog_num => entry_array[0],
-        :body_id => body.id,
-      )
-    end
-
-    unless alt_name.blank?
-      Catalog.find_or_create_by(
-        :catalog => alt_name,
-        :catalog_num => nil,
-        :body_id => body.id,
-      )
+    case catpos.to_i
+      when 0
+        load_body(nameid, body_id,1)
+        load_body(alt_name,body_id,0) unless alt_name.blank?
+      when 1
+        load_body(nameid, body_id,0)
+        load_body(alt_name,body_id,1) unless alt_name.blank?
+      when 2
+        Catalog.find_or_create_by(
+          :catalog => nameid,
+          :catalog_num => nil,
+          :body_id => body.id)
+          body_array = alt_name.split(';')
+          load_body(body_array[0],body_id,1)
+          load_body(body_array[1],body_id,0)
     end
   end    
 end

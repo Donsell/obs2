@@ -13,7 +13,7 @@
     }
 
     ul {
-        text-transform: uppercase;
+        #text-transform: uppercase;
     }
 
     ul.inline-list.right {
@@ -197,6 +197,10 @@
         page-break-inside: avoid;
     }
 
+    .hero-content .obs-detail {
+        color :orange;
+    }
+
     .hero-content a {
         color: white;
         margin: 5px;
@@ -207,6 +211,7 @@
     }
 
     .hero-content .object-info {
+        text-transform: capitalize;
         color: white;
        left: 512px;
     }
@@ -217,7 +222,7 @@
     }
 
     .hero-content .stats ul {
-        text-transform: none;
+        text-transform: capitalize;
         list-style-type: none;
         list-style-position: inside;
     }

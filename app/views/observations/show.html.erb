@@ -3,42 +3,31 @@
   <%= render partial: 'bodies/body', locals: {body: @observation.body}  %>
   <hr>
 
-  <%="#{'Viewed On: ' + ' ' + @observation.obs_date.strftime('%y/%m/%d') + ' @ ' + @observation.obs_time.strftime('%H:%M')}"  %><br>
+  <div class="black-box">
+    <div class="obs-detail">
 
-  <%= "#{'Location: ' + @observation.outing.site.name}" %><br>
+        <%="#{'Viewed On: ' + ' ' + @observation.obs_date.strftime('%m/%d/%Y') + ' @ ' + @observation.obs_time.strftime('%H:%M')}"  %>
 
-<p>
-  <%= "#{'Seeing: ' + Observation::SEEING_HASH[@observation.seeing]}"%>
-</p>
-
-<p>
-  <%= "#{'Transparency: ' + Observation::TRANS_HASH[@observation.transparency]}" %>
-</p>
-
-<p>
-  <%= "#{'Naked Eye Limiting Magnitude: ' + @observation.outing.limiting_magnitude.to_s}" %>
-<p>
-  <%= "#{'Telescope: ' + @observation.telescope.telescope_name}" %>
-</p>
-
-<p>
-  <%= "#{'Eyepiece: ' + @observation.eyepiece.eyepiece_name + ' Magnifcation: ' + @observation.magnification}x"  %>
-</p>
-
-<p>
-  <% if @observation.filter_id.present? %>
-    <%= "#{'Filter: ' + @observation.filter.filter_name}" %>
-  <% end %>
-</p>
-
-<p>
-  <strong>Note:</strong>
-  <%= @observation.note %>
-</p>
+        <ul>
+          <li><%= "#{'  Location: ' + @observation.outing.site.name}" %></li>
+          <li><%= "#{'Seeing: ' + Observation::SEEING_HASH[@observation.seeing]}"%></li>
+          <li><%= "#{'Transparency: ' + Observation::TRANS_HASH[@observation.transparency]}" %></li>
+          <li><%= "#{'Naked Eye Limiting Magnitude: ' + @observation.outing.limiting_magnitude.to_s}" %> </li>
+          <li><%= "#{'Telescope: ' + @observation.telescope.telescope_name}" %></li>
+          <li><%= "#{'Eyepiece: ' + @observation.eyepiece.eyepiece_name + ' Magnifcation: ' + @observation.magnification}x"  %></li>
+          <% unless @observation.filter_id.blank? %>
+            <li><%= "#{'Filter: ' + @observation.filter.filter_name}"  unless @observation.filter_id.blank? %></li>
+          <% end %>
+          <p>
+            <strong>Note:</strong>
+            <%= @observation.note %>
+          </p>
+        </ul>
+    </div>
+</div>
 <hr>
 <% if @other_obs.count > 0 %>
    <h2>Other Observations of this Object</h2>
    <%= render partial: 'observations/observations', locals: {obs: @other_obs} %>
 <% end %>
-<%= link_to 'Edit', edit_outing_observation_path(@observation.outing_id, @observation) %> |
-<%= link_to 'Back', outing_path(@observation.outing_id) %>
+<%= link_to 'Back', outing_path(@observation.outing_id),  class: "secondary small button" %>
