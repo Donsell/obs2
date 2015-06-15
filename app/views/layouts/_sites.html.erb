@@ -18,7 +18,7 @@
           <td><%= site.longitude %></td>
           <td><%= site.description %></td>
           <td><%= link_to 'Edit', edit_site_path(site), class: "tabular small button" %></td>
-          <td><%= link_to 'Destroy', site, method: :delete, data: { confirm: 'Are you sure?' }, class: "tabular small button" %></td>
+          <td><%= link_to 'Delete', site, method: :delete, data: { confirm: 'Are you sure?' }, class: "tabular small button" %></td>
         </tr>
       <% end %>
     </tbody>
