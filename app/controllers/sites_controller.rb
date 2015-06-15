@@ -25,16 +25,22 @@ class SitesController < ApplicationController
 
   def create
     @site = Site.new(site_params)
-    flash[:notice] = 'Site was successfully created.' if @site.save
-    redirect_to ({controller: "equipment", id: "sites"})
-
-     #redirect_to (current_user)
+    if @site.save
+        flash[:notice] = 'Site was successfully created.'
+        redirect_to ({controller: "equipment", id: "sites"})
+    else
+        redirect_to new_site_path, error: "The site name must exist."
+    end
   end
 
   def update
-    flash[:notice] = 'Site was successfully updated.' if @site.update(site_params)
-     #redirect_to (current_user)
-    redirect_to ({controller: "equipment", id: "sites"})
+    if @site.update(site_params)
+      flash[:notice] = 'Site was successfully updated.' if @site.update(site_params)
+       #redirect_to (current_user)
+      redirect_to ({controller: "equipment", id: "sites"})
+    else
+      redirect_to edit_site_path, error: "The site name must exist."
+    end
 
   end
 

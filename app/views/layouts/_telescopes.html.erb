@@ -18,7 +18,7 @@
     <td><%= telescope.f_ratio %></td>
     <td><%= telescope.diameter %></td>
     <td><%= link_to 'Edit', edit_telescope_path(telescope), class: "tabular small button" %></td>
-    <td><%= link_to 'Destroy', telescope, method: :delete, data: { confirm: 'Are you sure?' }, class: "tabular small button" %></td>
+    <td><%= link_to 'Delete', telescope, method: :delete, data: { confirm: 'Are you sure?' }, class: "tabular small button" %></td>
   </tr>
   <% end %>
 </table>

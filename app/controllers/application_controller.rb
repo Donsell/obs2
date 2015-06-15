@@ -3,7 +3,9 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
  before_action :configure_devise_permitted_parameters, if: :devise_controller?
  protect_from_forgery with: :exception
+ add_flash_types :error 
 
+ 
   def after_sign_in_path_for(user)
     	user_path(current_user)
   end

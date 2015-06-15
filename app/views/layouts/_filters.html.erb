@@ -12,7 +12,7 @@
           <td><%= filter.make %></td>
           <td><%= filter.model  %>
           <td><%= link_to 'Edit', edit_filter_path(filter), class: "tabular small button" %></td>
-          <td><%= link_to 'Destroy', filter, method: :delete, data: { confirm: 'Are you sure?' }, class: "tabular small button" %></td>
+          <td><%= link_to 'Delete', filter, method: :delete, data: { confirm: 'Are you sure?' }, class: "tabular small button" %></td>
         </tr>
       <% end %>
     </tbody>
