@@ -1,0 +1,346 @@
+
+@import "foundation_and_overrides";
+@import "foundation/components/visibility";
+    body {
+        font-family: 'Raleway', sans-serif;
+        font-size: 18px;
+    }
+
+    hr {
+        text-align: center;
+        margin: 0 auto;
+        opacity: 0.5;
+    }
+
+    ul {
+        #text-transform: uppercase;
+    }
+
+    ul.inline-list.right {
+        text-transform: none;
+    }
+
+    ul.inline-list.right a {
+        color: #000;
+    }
+
+    ul.inline-list.right a:hover {
+        color: rgba(0, 0, 0, 0.5);
+    }
+
+    h1 {
+        font-family: 'American Typewriter', 'Courier New', Courier, Monaco, mono;
+        font-size: 32px;
+        color: #fff;
+        line-height: 28px;
+        margin-top: 16px;
+        margin-bottom: 0px;
+        text-align: center;
+    }
+
+    h2 {
+        font-family: 'American Typewriter', 'Courier New', Courier, Monaco, mono;
+        color: #fff;
+        font-size: 36px;
+        line-height: 34px;
+    }
+
+    h3 {
+        font-family: 'American Typewriter', 'Courier New', Courier, Monaco, mono;
+        font-size: 24px;
+        color: #fff;
+        line-height: 10px;
+        text-align: center;
+        font-weight: 500;
+        padding-bottom: 10px;
+    }
+
+    h4 {
+        font-family: 'American Typewriter', 'Courier New', Courier, Monaco, mono;
+        color: #000;
+        font-size: 28px;
+        padding-top: 5px;
+    }
+
+    .columns.large-centered {
+        padding-left: 5px;
+        padding-right: 5px;
+    }
+
+    @media only screen and (max-width: 40em) {
+        .columns.large-centered {
+            font-size: 13px;
+        }
+    }
+
+    @media only screen and (min-width: 40.063em) {
+        .columns.large-centered {
+            font-size: 14px;
+        }
+    }
+
+    .about-box {
+        color: #fff;
+    }
+
+    .black-box {
+        background-color: rgba(0, 0, 0, 0.55);
+        padding: 35px;
+        font-weight: 900;
+    }
+
+    .black-box p {
+        font-weight: 900;
+    }
+
+    .secondary.small.button {
+        background-color: transparent;
+        color: #fff;
+        border: 2px #fff solid;
+        border-radius: 5px;
+        padding: 15px 50px 15px 50px;
+        margin: 0;
+        text-align: center;
+    }
+
+    .tabular.small.button {
+        background-color: transparent;
+        color: blue;
+        border: 0px black solid;
+        border-radius: 5px;
+        padding: 0px 0px 0px 0px;
+        margin: 0;
+    }
+
+    .tabular.small.button:hover {
+    	color: white;
+    	background-color: rgba(0,0,0,.5);
+    }
+
+    .secondary.small.button:hover {
+        background-color: rgba(255, 255, 255, 0.2);
+    }
+
+    .row .main-wrapper {
+    		width: 100%;
+        color: #fff;
+    }
+
+    .about-content {
+        background-color: #fff;
+        box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .button-group li .button {
+    		color: white;
+        border: 0!important;
+    }
+
+    .button {
+        -webkit-appearance: none;
+        background-color: transparent;
+        border-width: 0;
+        text-align: center;
+        box-shadow: 0 0 0;
+    }
+
+    .button:hover {
+        color: black;
+        background-color: white;
+    }
+
+    footer p,
+    footer a {
+        font-size: 14px;
+    }
+
+    .hero {
+        background: url("/hero.png");
+        width: 100%;
+        padding-bottom: 50px;
+        background-size: cover;
+        box-shadow: inset 0px 0px 0 3000px rgba(0, 0, 0, 0.2);
+    }
+
+    .hero-content {
+        max-width: 1024px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        padding-left: 10px;
+        padding-right: 10px;
+        background-color: slategrey;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .hero-content .bodies {
+        color: black;
+    }
+
+    .hero-content .date {
+        float: right;
+    }
+
+    .hero-content .log {
+        #background-color:  white;
+   }
+
+    .hero-content .log .columns {
+        border: 1px solid grey;
+    }
+
+    .hero-content .log .observation {
+        font-size: 15px;
+        background-color: white;
+        border: 2px solid black;
+        margin-bottom:  10px;
+        page-break-inside: avoid;
+    }
+
+    .hero-content .obs-detail {
+        color :orange;
+    }
+
+    .hero-content a {
+        color: white;
+        margin: 5px;
+    }
+
+    .hero-content hr {
+        padding-bottom: 10px;
+    }
+
+    .hero-content .object-info {
+        text-transform: capitalize;
+        color: white;
+       left: 512px;
+    }
+
+    .hero-content .object-info  .atlas ul {
+       # list-style-type: none;
+        list-style-position: inside;
+    }
+
+    .hero-content .stats ul {
+        text-transform: capitalize;
+        list-style-type: none;
+        list-style-position: inside;
+    }
+
+
+
+    .hero-content h3 {
+        font-family: 'American Typewriter', 'Courier New', Courier, Monaco, mono;
+        font-size: 24px;
+        color: white;
+        line-height: 10px;
+        text-align: center;
+        font-weight: 500;
+        padding-bottom: 10px;
+    }
+
+   .hero-content #map-canvas {
+        width: 250px;
+        height: 250px;
+        background-color: #ccc;
+        float: right;
+    }
+
+     .signin-box {
+        max-width: 500px;
+        margin: 10px 0 10px 0;
+        margin-left:  auto;
+        margin-right: auto;
+        box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+        border: none;
+        background-color: rgba(0, 0, 0, 0.55);
+        padding: 35px;
+        font-weight: 900;
+        color: white;
+    }
+
+    .signin-box label {
+        color: white;
+    }
+
+.boolean label {
+    color: white;
+}
+
+    .panel {
+        margin: 40px 0 40px 0;
+        box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+        border: none;
+        background-color: #EAEAEA;
+    }
+
+    .large-4 img {
+        box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .radius.right.button {
+        color: #000;
+        border: 2px #000 solid;
+        border-radius: 5px;
+        padding: 15px 50px 15px 50px;
+        margin: 0;
+        font-size: 0.8125em;
+    }
+
+    @media only screen and (min-width: 64.063em) {
+        .radius.right.button {
+            color: #000;
+            border: 2px #000 solid;
+            border-radius: 5px;
+            padding: 15px 50px 15px 50px;
+            margin-top: 25px;
+            font-size: 0.8125em;
+        }
+    }
+
+    @media only screen and (min-width: 40.063em) {
+        .radius.right.button {
+            color: #000;
+            border: 2px #000 solid;
+            border-radius: 5px;
+            padding: 15px 50px 15px 50px;
+            margin-top: 25px;
+            font-size: 0.8125em;
+        }
+    }
+
+// This would make the large grid function like a print grid
+    @media print {
+        font-size:  12px;
+        @for $i from 1 through $total-columns {
+            .small-#{$i} {
+                width: grid-calc($i, $total-columns);
+            }
+        }
+    }
+
+    .radius.right.button:hover {
+        background-color: rgba(0, 0, 0, 0.1);
+    }
+
+    table {
+    	width: 100%;
+    }
+
+ dl {
+    width: 40%;
+    margin-bottom:20px;
+}
+
+dl dt {
+    color:#fff;
+    float:left;
+    width:50%;
+}
+
+dl dd {
+    float: left;
+   width: 50%;
+   font-weight: bold;
+}
+
