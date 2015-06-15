@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150518001710) do
+ActiveRecord::Schema.define(version: 20150615161004) do
 
   create_table "admins", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -89,6 +89,7 @@ ActiveRecord::Schema.define(version: 20150518001710) do
     t.integer  "afov"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "current"
   end
 
   add_index "eyepieces", ["user_id"], name: "index_eyepieces_on_user_id"
@@ -99,6 +100,7 @@ ActiveRecord::Schema.define(version: 20150518001710) do
     t.text     "model"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "current"
   end
 
   add_index "filters", ["user_id"], name: "index_filters_on_user_id"
@@ -200,6 +202,7 @@ ActiveRecord::Schema.define(version: 20150518001710) do
     t.integer  "diameter"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "current"
   end
 
   add_index "telescopes", ["user_id"], name: "index_telescopes_on_user_id"

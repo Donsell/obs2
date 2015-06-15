@@ -71,6 +71,6 @@ class EyepiecesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def eyepiece_params
-      params.require(:eyepiece).permit(:user_id, :make, :model, :focal_length, :afov)
+      params.require(:eyepiece).permit(:user_id, :make, :model, :focal_length, :afov, :current)
     end
 end

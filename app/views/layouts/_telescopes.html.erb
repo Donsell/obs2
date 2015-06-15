@@ -7,6 +7,7 @@
       <th>Focal length</th>
       <th>F ratio</th>
       <th>Diameter</th>
+      <th>Own?</th>
       <th colspan="3"></th>
     </thead>
   </tr>
@@ -17,6 +18,11 @@
     <td><%= telescope.focal_length %></td>
     <td><%= telescope.f_ratio %></td>
     <td><%= telescope.diameter %></td>
+    <% if telescope.current == true %>
+      <td>Yes</td>
+    <% else %>
+      <td>No</td>
+    <% end %>
     <td><%= link_to 'Edit', edit_telescope_path(telescope), class: "tabular small button" %></td>
     <td><%= link_to 'Delete', telescope, method: :delete, data: { confirm: 'Are you sure?' }, class: "tabular small button" %></td>
   </tr>
