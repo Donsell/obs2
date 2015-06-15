@@ -45,15 +45,15 @@
     <div class="row">
       <div class="small-3 columns">
         <%= f.label :telescope_id %>
-        <%= f.collection_select :telescope_id , Telescope.where(:user_id => current_user.id), :id, :telescope_name %>
+        <%= f.collection_select :telescope_id , Telescope.where(:user_id => current_user.id, current:  true), :id, :telescope_name %>
       </div>
       <div class="small-3 columns">
         <%= f.label :eyepiece_id %>
-        <%= f.collection_select :eyepiece_id, Eyepiece.where(:user_id => current_user.id), :id, :eyepiece_name %>
+        <%= f.collection_select :eyepiece_id, Eyepiece.where(:user_id => current_user.id, current: true), :id, :eyepiece_name %>
       </div>
       <div class="small-3 columns">
         <%= f.label :filter_id %>
-        <%= f.collection_select :filter_id, Filter.where(:user_id  => current_user.id), :id, :filter_name, :include_blank => true %>
+        <%= f.collection_select :filter_id, Filter.where(:user_id  => current_user.id, current: true), :id, :filter_name, :include_blank => true %>
       </div>
       <div class="small-3 colmns">
          &nbsp

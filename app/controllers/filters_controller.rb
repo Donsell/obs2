@@ -60,6 +60,6 @@ class FiltersController < ApplicationController
     end
 
     def filter_params
-      params.require(:filter).permit(:user_id, :make, :model)
+      params.require(:filter).permit(:user_id, :make, :model, :current)
     end
 end

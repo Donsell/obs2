@@ -5,6 +5,7 @@
         <th>Model</th>
         <th>Focal length</th>
         <th>Afov</th>
+        <th>Own?</th>
         <th colspan="3"></th>
       </tr>
     </thead>
@@ -17,6 +18,11 @@
           <td><%= eyepiece.model %></td>
           <td><%= eyepiece.focal_length %></td>
           <td><%= eyepiece.afov %></td>
+          <% if eyepiece.current == true %>
+            <td>Yes</td>
+          <% else %>
+            <td>No</td>
+          <% end %>
           <td><%= link_to 'Edit', edit_eyepiece_path(eyepiece), class: "tabular small button" %></td>
           <td><%= link_to 'Delete', eyepiece, method: :delete, data: { confirm: 'Are you sure?' }, class: "tabular small button" %></td>
         </tr>

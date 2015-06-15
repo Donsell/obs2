@@ -72,7 +72,7 @@ class TelescopesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def telescope_params
-      params.require(:telescope).permit(:user_id, :make, :model, :focal_length, :f_ratio, :diameter)
+      params.require(:telescope).permit(:user_id, :make, :model, :focal_length, :f_ratio, :diameter, :current)
     end
 
 
