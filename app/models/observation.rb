@@ -9,6 +9,7 @@ class Observation < ActiveRecord::Base
       has_many :program_observations
       before_validation :set_body_id
       after_save :check_program
+      validates :seeing, :transparency, :telescope_id,  :note,  :obs_date, :obs_time, presence: true
       #validates :body_id, :presence => { :message => "This object isn't recognized" }
 
 
