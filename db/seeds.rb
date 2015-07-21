@@ -94,14 +94,13 @@ def load_body(nameid, id, name_pos)
     )
   end
 end
-
+=begin
 require_relative "constellation_seed.rb"
 require_relative "bodytypes_seed.rb"
 require_relative "body_seed.rb"
 require_relative "double_seed.rb"
+=end
+ProgramBody.delete_all
 require_relative "messier_seed.rb"
 require_relative "herschel_seed.rb"
-
-=begin
-
-=end
+require_relative "alds_seed.rb"
